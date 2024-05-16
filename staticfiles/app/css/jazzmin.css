@@ -1,0 +1,93 @@
+h5 {
+    font-size: 0.7rem;
+}
+
+.nav-sidebar .nav-header {
+    font-size: 0.7rem;
+}
+
+.sidebar {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.dashboard-card-body {
+    padding-bottom: 0rem;
+    padding-top: 0rem;
+}
+
+#id_summary {
+    height: 10em;
+}
+
+.quiet {
+    padding-left: 1rem;
+}
+
+.form-control[type=password] {
+    font-size: 1rem;
+    padding: .75rem;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+}
+
+#content-related {
+    display: none;
+}
+
+.page-actions {
+    padding-top: 1.5rem;
+}
+
+#otp_totp {
+    visibility: hidden;
+    position: relative;
+}
+
+#otp_totp:after {
+    content: "One Time Passwords";
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#sidebar_otp_totp {
+    visibility: hidden;
+    position: relative;
+
+}
+
+#sidebar_otp_totp:after {
+    content: "One Time Passwords";
+    visibility: visible;
+    position: absolute;
+    left: 12px;
+
+}
+
+#authtoken {
+    visibility: hidden;
+    position: relative;
+}
+
+#authtoken:after {
+    content: "API Tokens";
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#sidebar_authtoken {
+    visibility: hidden;
+    position: relative;
+
+}
+
+#sidebar_authtoken:after {
+    content: "API Tokens";
+    visibility: visible;
+    position: absolute;
+    left: 12px;
+}

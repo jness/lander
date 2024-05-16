@@ -1,0 +1,258 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{{ landing.page_title }}</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'app/assets/favicon.ico' %}" />
+        <link href="{% static 'app/css/bootstrap-icons.css' %}" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'app/css/styles.css' %}" rel="stylesheet" />
+        <!-- Bootswatch color schema-->
+        <!-- <link href="{% static 'app/css/lux.css' %}" rel="stylesheet" /> -->
+
+        <style>
+            :root {
+                --bs-primary: {{ landing.bs_primary }};
+                --bs-secondary: {{ landing.bs_secondary }};
+            }
+            .navbar-custom {
+                background-color: {{ landing.bs_navbar }};
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+        </style>
+
+    </head>
+
+    <body id="page-top">
+
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <div class="container px-5">
+                <a class="navbar-brand" href="#page-top">{{ landing.site.name }}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="#!">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Log In</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header-->
+        <header class="masthead text-center text-white">
+            <div class="masthead-content">
+                <div class="container px-5">
+                    <h1 class="masthead-heading mb-0">{{ landing.heading }}</h1>
+                    <h2 class="masthead-subheading mb-0">{{ landing.subheading }}</h2>
+                    <a id="learn-more-button" class="btn btn-primary btn-xl rounded-pill mt-5" href="#features">Learn More</a>
+                </div>
+            </div>
+            <div class="bg-circle-1 bg-circle"></div>
+            <div class="bg-circle-2 bg-circle"></div>
+            <div class="bg-circle-3 bg-circle"></div>
+            <div class="bg-circle-4 bg-circle"></div>
+        </header>
+
+        <!-- Thank you Modal -->
+        <div class="modal" id="thankModal" tabindex="-1" role="dialog" aria-labelledby="thankModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="thankModalTitle">Message Sent</h5>
+                </div>
+                <div class="modal-body">
+                    Thank you for your message, we will respond soon.
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features section-->
+        {% if features %}
+        <section class="py-5 border-bottom" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    {% for feature in features %}
+                        <div class="col-lg-4 mb-5 mb-lg-0 feature_div">
+                            <h2 class="h4 fw-bolder">{{ feature.title }}</h2>
+                            <p>{{ feature.summary }}</p>
+                            <a class="text-decoration-none" href="#!">
+                                Learn more
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if prices %}
+        <!-- Pricing section-->
+        <section class="bg-light py-5 border-bottom" id="prices">
+            <div class="container px-5 my-5">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bolder">Pay as you grow</h2>
+                    <p class="lead mb-0">With our no hassle pricing plans</p>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    {% for price in prices %}
+                        <div class="col-lg-6 col-xl-4">
+                            <div class="card mb-5 mb-xl-0">
+                                <div class="card-body p-5">
+
+                                    {% if price.featured %}
+                                        <div class="small text-uppercase fw-bold">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            {{ price.title }}
+                                        </div>
+                                    {% else %}
+                                        <div class="small text-uppercase fw-bold text-muted">{{ price.title }}</div>
+                                    {% endif %}
+
+                                    <div class="mb-3">
+                                        <span class="display-4 fw-bold">${{ price.cost }}</span>
+                                        <span class="text-muted">/ mo.</span>
+                                    </div>
+                                    <ul class="list-unstyled mb-4">
+                                        {% for checked_feature in price.checked_features %}
+                                            <li class="mb-2">
+                                                <i class="bi bi-check text-primary"></i>
+                                                {{ checked_feature }}
+                                            </li>
+                                        {% endfor %}
+                                        {% for missing_feature in price.missing_features %}
+                                            <li class="mb-2 text-muted">
+                                                <i class="bi bi-x"></i>
+                                                {{ missing_feature }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <div class="d-grid"><a class="btn btn-outline-primary" href="#!">Choose plan</a></div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
+        
+        {% if testimonials %}
+        <!-- Testimonials section-->
+        <section class="py-5 border-bottom" id="testimonials">
+            <div class="container px-5 my-5 px-5">
+                <div class="text-center mb-5">
+                    <h2 class="fw-bolder">Customer testimonials</h2>
+                    <p class="lead mb-0">Our customers love working with us</p>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+                        {% for testimonial in testimonials %}
+                            <div class="card mb-4">
+                                <div class="card-body p-4">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
+                                        <div class="ms-4">
+                                            <p class="mb-1">{{ testimonial.content }}</p>
+                                            <div class="small text-muted">- {{ testimonial.author }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        {% if landing.contact_enabled %}
+        <!-- Contact section-->
+        <section class="bg-light py-5" id="contact">
+            <div class="container px-5 my-5 px-5">
+                <div class="text-center mb-5">
+                    <div class="feature bg-primary rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                    <h2 class="fw-bolder">Get in touch</h2>
+                    <p class="lead mb-0">We'd love to hear from you</p>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-6">
+
+                        <form action="{% url 'index' %}#contact" method="POST">
+                            {% csrf_token %}
+                            <!-- Name input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="full_name" name="full_name" type="text" placeholder="Enter your name..." {% if contact_form.full_name.value %}value="{{ contact_form.full_name.value }}"{% endif %} />
+                                <label for="name">Full name</label>
+                                {% if contact_form.errors.full_name %}
+                                    <div style="padding-top: 0.5rem; padding-left: 0.5rem; padding-bottom: 1.5rem;">{{ contact_form.errors.full_name.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Email address input-->
+                            <div class="form-floating mb-3">
+                                <input class="form-control" id="email" name="email" type="text" placeholder="name@example.com" {% if contact_form.email.value %}value="{{ contact_form.email.value }}"{% endif %} />
+                                <label for="email">Email address</label>
+                                {% if contact_form.errors.email %}
+                                    <div style="padding-top: 0.5rem; padding-left: 0.5rem; padding-bottom: 1.5rem;">{{ contact_form.errors.email.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <!-- Message input-->
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" name="message" type="text" placeholder="Enter your message here..." style="height: 10rem">{% if contact_form.message.value %}{{ contact_form.message.value }}{% endif %}</textarea>
+                                <label for="message">Message</label>
+                                {% if contact_form.errors.message %}
+                                    <div style="padding-top: 0.5rem; padding-left: 0.5rem; padding-bottom: 1.5rem;">{{ contact_form.errors.message.as_text }}</div>
+                                {% endif %}
+                            </div>
+
+                            <!-- This is what your users will see when the form-->
+                            <!-- has successfully submitted-->
+                            <div class="d-none" id="submitSuccessMessage">
+                                <div class="text-center mb-3">
+                                    <div class="fw-bolder">Form submission successful!</div>
+                                </div>
+                            </div>
+
+                            <!-- This is what your users will see when there is-->
+                            <!-- an error submitting the form-->
+                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                            
+                            <!-- Submit Button-->
+                            <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Footer-->
+        <footer class="py-3 bg-background">
+            <div class="container px-5"><p class="m-0 text-center small">{{ landing.footer }}</p></div>
+        </footer>
+
+        <!-- JQuery-->
+        <script src="{% static 'app/js/jquery.js' %}"></script>
+        <!-- Bootstrap core JS-->
+        <script src="{% static 'app/js/bootstrap.bundle.min.js' %}"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'app/js/scripts.js' %}"></script>
+
+    </body>
+</html>

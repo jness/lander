@@ -1,0 +1,10 @@
+venv/
+static/
+db.sqlite3
+**/__pycache__
+**/.DS_Store
+.DS_Store
+*.bak
+**/*.bak
+postgres_data/
+logs/

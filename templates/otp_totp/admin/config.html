@@ -1,0 +1,20 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<div class="col-12">
+<center>
+  <h1>Scan with authenticator app</h1>
+  <hr>
+  
+  <p id="qrcode">
+    <img class="img-fluid" width="400" height="400" data-bs-toggle="tooltip"
+         style="background-color: white"
+         src="{% url "admin:otp_totp_totpdevice_qrcode" pk=device.pk %}"
+         onerror="document.getElementById('qrcode').style.display = 'none'; document.getElementById('no-qrcode').style.display = 'block';"
+    >
+  </p>
+
+  <p style="word-break: break-all" class="container-fluid">{{ device.config_url }}</p>
+</center>
+</div>
+{% endblock %}
