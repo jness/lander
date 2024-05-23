@@ -147,6 +147,8 @@ SUMMERNOTE_CONFIG = {
     'summernote': {
         'width': '100%',
 
+        'attachment_require_authentication': True,
+
         # Toolbar customization
         # https://summernote.org/deep-dive/#custom-toolbar-popover
         'toolbar': [
@@ -155,7 +157,7 @@ SUMMERNOTE_CONFIG = {
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
             ['table', ['table']],
-            ['insert', ['link']],
+            ['insert', ['link', 'picture']],
             ['view', ['fullscreen', 'codeview']],
         ]
     }
@@ -283,8 +285,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'staticfiles'),
 )
 
-# MEDIA_URL = 'media/'
-# MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

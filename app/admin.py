@@ -16,7 +16,7 @@ from . import models
 admin.site.unregister(Site)
 admin.site.unregister(Group)
 admin.site.unregister(StaticDevice)
-admin.site.unregister(Attachment)
+#admin.site.unregister(Attachment)
 
 # remove OTP models if disabled
 if not settings.OTP_ENABLED:
@@ -82,7 +82,7 @@ class ArticleAdmin(SummernoteModelAdmin):
     list_display = ["site", "title", "author", "updated_at", "featured", "published"]
     list_display_links = ["site"]
     list_filter = ["site__domain", "featured", "published"]
-    readonly_fields = ["id", "created_at", "updated_at"]
+    readonly_fields = ["id", "slug_name", "created_at", "updated_at"]
     ordering = ["-updated_at"]
 
     summernote_fields = ('content',)

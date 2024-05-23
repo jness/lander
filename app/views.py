@@ -42,3 +42,22 @@ def index(request):
     }
 
     return render(request, landing.template.path, context)
+
+
+def article(request, slug_name):
+    """
+    Article Page
+    """
+
+    # finding landing for the site and make sure enabled
+    try:
+        landing = models.Landing.on_site.get(enabled=True)
+    except ObjectDoesNotExist:
+        raise DisallowedHost("Not a valid site.")
+
+    context = {
+        'landing': landing,
+        'article': models.Article.on_site.get(slug_name=slug_name, published=True)
+    }
+
+    return render(request, landing.template.path, context)
