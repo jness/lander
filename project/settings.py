@@ -113,6 +113,7 @@ JAZZMIN_SETTINGS = {
         "auth.group",
         "otp_totp",
         "authtoken",
+        "django_summernote",
         "sites",
         "app",
         "app.template",
@@ -122,7 +123,7 @@ JAZZMIN_SETTINGS = {
         "app.testimonial",
         "app.contact",
         "app.schedule",
-        "app.schedulelog"
+        "app.schedulelog",
     ],
 
     # sidebar icons
@@ -140,6 +141,7 @@ JAZZMIN_SETTINGS = {
         "app.schedulelog": "fas fa-glasses",
         "authtoken.tokenproxy": "fas fa-key",
         "otp_totp.totpdevice": "fas fa-lock",
+        "django_summernote.attachment": "fas fa-image"
     },
 }
 
