@@ -50,7 +50,7 @@
                 <div class="container px-5">
                     {% if article %}
                     <h1 class="masthead-heading mb-0">{{ article.title }}</h1>
-                    <h2 class="masthead-subheading mb-0">{{ article.subtext }}</h2>
+                    <h2 class="masthead-subheading mb-0">{{ article.summary }}</h2>
                     {% else %}
                     <h1 class="masthead-heading mb-0">{{ landing.heading }}</h1>
                     <h2 class="masthead-subheading mb-0">{{ landing.subheading }}</h2>
@@ -89,7 +89,7 @@
             <p class="fw-lighter d-flex justify-content-end">Author: {{ article.author }}</p>
             <p class="fw-lighter d-flex justify-content-end">Updated: {{ article.created_at }}</p>
             <hr>
-            {{ article.content|safe }}    
+            {{ article.content|safe }}
             <hr>
         </div>
         {% endif %}

@@ -85,7 +85,6 @@ class Article(models.Model):
         unique_together = ("title", "site")
 
     title = models.CharField(max_length=200)
-    subtext = models.CharField(max_length=300)
     slug_name = models.CharField(max_length=250)
     summary = models.TextField()
     content = models.TextField()

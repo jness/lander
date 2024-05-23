@@ -17,7 +17,8 @@ h5 {
 }
 
 #id_summary {
-    height: 10em;
+    height: 10rem;
+    font-size: 1rem;
 }
 
 .quiet {
