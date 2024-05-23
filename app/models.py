@@ -85,6 +85,8 @@ class Article(models.Model):
         unique_together = ("title", "site")
 
     title = models.CharField(max_length=200)
+    subtext = models.CharField(max_length=300)
+    slug_name = models.CharField(max_length=250)
     summary = models.TextField()
     content = models.TextField()
     author = models.CharField(max_length=100)
@@ -103,6 +105,10 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def save(self):
+        self.slug_name = slugify(self.title)
+        super().save()
 
 
 class Price(models.Model):
