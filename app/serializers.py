@@ -4,6 +4,7 @@ from django.contrib.sites.models import Site
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from django_otp.plugins.otp_totp.models import TOTPDevice
+from django_summernote.models import Attachment
 
 from . import models
 
@@ -102,3 +103,8 @@ class ScheduleLogSerializer(serializers.HyperlinkedModelSerializer):
         model = models.ScheduleLog
         fields = '__all__'
         read_only_fields = ('created_at',)
+
+class AttachmentSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Attachment
+        fields = '__all__'

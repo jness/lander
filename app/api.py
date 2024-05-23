@@ -4,6 +4,7 @@ from django.contrib.sites.models import Site
 from rest_framework import permissions, viewsets
 from rest_framework.authtoken.models import Token
 from django_otp.plugins.otp_totp.models import TOTPDevice
+from django_summernote.models import Attachment
 
 from . import serializers
 from . import models
@@ -121,4 +122,12 @@ class ScheduleLogViewSet(viewsets.ModelViewSet):
     """
     queryset = models.ScheduleLog.objects.all()
     serializer_class = serializers.ScheduleLogSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class AttachmentViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Attachment.objects.all()
+    serializer_class = serializers.AttachmentSerializer
     permission_classes = [permissions.IsAuthenticated]

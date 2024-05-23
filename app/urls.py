@@ -23,6 +23,7 @@ router.register(r"articles", api.ArticleViewSet)
 router.register(r"prices", api.PriceViewSet)
 router.register(r"testimonials", api.TestimonialViewSet)
 router.register(r"contacts", api.ContactViewSet)
+router.register(r"attachments", api.AttachmentViewSet)
 
 if settings.CRON_SCHEDULES:
     router.register(r"schedules", api.ScheduleViewSet)
