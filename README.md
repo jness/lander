@@ -1,9 +1,10 @@
 # Lander
 
-![logo](docs/images/logo.jpg)
 
 Django application for dynamically hosting multiple landing pages,
 and scheduling management commands using cron.
+
+![logo](docs/images/logo.jpg)
 
 > Disclaimer: The cron scheduling logic is not scaleable across
 > multiple web instances. something like Celery may work for that.
