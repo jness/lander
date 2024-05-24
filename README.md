@@ -1,5 +1,7 @@
 # Lander
 
+![logo](docs/images/logo.jpg)
+
 Django application for dynamically hosting multiple landing pages,
 and scheduling management commands using cron.
 
