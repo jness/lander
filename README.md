@@ -1,6 +1,5 @@
 # Lander
 
-
 Django application for dynamically hosting multiple landing pages,
 and scheduling management commands using cron.
 
