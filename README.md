@@ -84,6 +84,26 @@ TOTP device, scan the QR code with which ever authenticator app you are using.
 $ docker-compose exec web ./manage.py create_totp 1
 ```
 
+### Install Podman
+
+### Startup
+
+Using the `podman-launch.sh` start your application:
+
+```
+$ ./podman-launch.sh start
+```
+
+### Application initalization
+
+https://podman.io/
+
+When ready to run use the `init` command:
+
+```
+$ ./podman-launch.sh init
+```
+
 ### Access
 
 In order to utilize the initial example domains you will need to update
