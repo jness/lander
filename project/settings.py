@@ -30,6 +30,8 @@ DEBUG = bool(int(os.getenv('DEBUG', 0)))
 # application hosts multiple sites
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = ["http://django-burgers.com"]
+
 # Toggle to enable one time password
 OTP_ENABLED = True
 
@@ -268,8 +270,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
-
-TIME_ZONE = "America/Chicago"
 
 USE_I18N = True
 
