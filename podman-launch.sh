@@ -1,14 +1,23 @@
 #!/bin/bash
 
+# Whenever command is used incorrectly, print usage
+print_usage() {
+    echo "Usage: ./podman-launch.sh [build|start|init|restart|stop|clean]"
+    exit 1
+}
+
 # Ensure program is used correctly
 if [[ $# < 1 ]] ; then
-    echo "Usage: ./podman-launch.sh [start|init|restart|stop|clean]"
-    exit 1
+    print_usage
 fi
 
-# Build and start containers
-start_container() {
+# Build container
+build_container() {
     sudo podman build -t lander .
+}
+
+# Start container
+start_container() {
     sudo podman run --replace -d -p 8000:8000 \
         --name lander \
         --env-file .env -v .:/app -w /app \
@@ -31,6 +40,9 @@ stop_container() {
 
 # Command verb switch
 case $1 in
+    "build")
+        build_container
+    ;;
     "start")
         start_container
     ;;
@@ -40,6 +52,7 @@ case $1 in
     "restart")
         # Stop, remove, and then build and start containers
        stop_container
+       build_container
        start_container
     ;;
     "stop")
@@ -48,5 +61,9 @@ case $1 in
     "clean")
         # Prune cache 
         sudo podman system prune
+        rm db.sqlite3
+    ;;
+    *)
+        print_usage
     ;;
 esac

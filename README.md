@@ -92,6 +92,7 @@ https://podman.io/
 Using the `podman-launch.sh` start your application:
 
 ```
+$ ./podman-launch.sh build
 $ ./podman-launch.sh start
 ```
 
