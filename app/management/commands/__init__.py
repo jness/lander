@@ -22,10 +22,17 @@ class ScheduledCommand(BaseCommand):
         if os.getenv('SCHEDULE_ID'):
             return Schedule.objects.get(id=os.getenv('SCHEDULE_ID'))
         
-    def save_log(self, message):
+    def log(self, message, error=False):
         """
         Logs to ScheduleLog
         """
+
+        if error:
+            self.logger.error(message)
+            message = 'ERROR: ' + str(message)
+        else:
+            self.logger.info(message)
+            message = 'INFO: ' + str(message)
 
         if self.get_schedule():
             scheduled_log = ScheduleLog(schedule=self.get_schedule(), content=message)
