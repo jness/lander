@@ -39,17 +39,9 @@ lander              running(1)          /home/user/Git/lander/docker-compose.yam
 
 ### Schema migrations
 
-On first run your database and application will need schema migrations:
+On first run your database will need to run schema migrations:
 
 >  You have 31 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, app, auth, authtoken, contenttypes, otp_static, otp_totp, sessions, sites.
-
-You can show the migrations using the management command:
-
-```
-$ docker-compose exec web ./manage.py showmigrations
-```
-
-And when ready to run use the `migrate` command:
 
 ```
 $ docker-compose exec web ./manage.py migrate
@@ -57,8 +49,8 @@ $ docker-compose exec web ./manage.py migrate
 
 ### Initial data
 
-The initial_data sets the `primary site` to domain **django-tacos.com**,
-a secondary site also exists under **django-burgers.com**.
+The initial_data sets the **primary site** to domain `django-tacos.com`,
+a secondary site also exists under `django-burgers.com`.
 
 Only the primary site routes the web admin and api.
 
@@ -68,7 +60,7 @@ $ docker-compose exec web ./manage.py loaddata app/fixtures/initial_data.json
 
 ### Create super user
 
-Next create a super user which will have access to the web admin:
+Next create an administrative user which will have access to the admin portal and api web interface:
 
 ```
 $ docker-compose exec web ./manage.py createsuperuser
@@ -77,7 +69,7 @@ $ docker-compose exec web ./manage.py createsuperuser
  ### Create OTP
 
 If `OTP_ENABLED` is set to **True** in `settings.py` you will need to setup a
-TOTP device, scan the QR code with which ever authenticator app you are using.
+TOTP device, scan the QR code with which ever authenticator app you are like (something like Google Authenticator):
 
 ```
 $ docker-compose exec web ./manage.py create_totp 1
@@ -86,7 +78,7 @@ $ docker-compose exec web ./manage.py create_totp 1
 ### Access
 
 In order to utilize the initial example domains you will need to update
-your **/etc/hosts**:
+your **/etc/hosts** to resolve locally:
 
 ```
 $ cat /etc/hosts
@@ -154,7 +146,7 @@ sqlite> SELECT * FROM django_site;
 
 ### Schedules
 
-Lander is capable of using an existing cron daemon to schedule
+Lander is capable of using an existing cron daemon (setup separately) to schedule
 management commands, merely enable `CRON_SCHEDULES` in **project/settings.py**.
 
 In order to allow the application to write `/etc/cron.d/` files
