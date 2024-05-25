@@ -18,15 +18,18 @@ class Command(ScheduledCommand):
     def handle(self, *args, **options):
 
         if not settings.OTP_ENABLED:
-            self.logger.error('Time-based one-time is disable, check OTP_ENABLED in settings.')
+            msg = 'Time-based one-time is disable, check OTP_ENABLED in settings.'
+            self.log(msg, error=True)
+            self.report_failure()
             sys.exit(1)
 
+        # wrap entire logic in try in order to log
+        # to our django models
         try:
             # create and save new totp object
             user_id = options["user_id"]
             device = TOTPDevice(user_id=user_id, name="Authenticator")
             device.save()
-            
             # display QR code in terminal
             qr = qrcode.QRCode()
             qr.add_data(device.config_url)
@@ -34,7 +37,8 @@ class Command(ScheduledCommand):
             qr.print_ascii(out=f)
             f.seek(0)
             print(f.read())
-        except:
+        except Exception as e:
+            self.log(e, error=True)
             self.report_failure()
             sys.exit(1)
 
@@ -43,5 +47,5 @@ class Command(ScheduledCommand):
         )
 
         # log message to ScheduleLog is executed via schedule
-        self.save_log('Successfully created TOTP device for user_id "%s"' % user_id)
+        self.log('Successfully created TOTP device for user_id "%s"' % user_id)
         self.report_success()

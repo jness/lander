@@ -66,6 +66,7 @@
     "pk": 1,
     "fields": {
       "title": "First featured title",
+      "slug_name": "first-featured-title",
       "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "site": 1,
@@ -81,6 +82,7 @@
     "pk": 2,
     "fields": {
       "title": "Second featured title",
+      "slug_name": "second-featured-title",
       "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "site": 1,
@@ -96,6 +98,7 @@
     "pk": 3,
     "fields": {
       "title": "Third featured title",
+      "slug_name": "third-featured-title",
       "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "site": 1,
@@ -111,6 +114,7 @@
     "pk": 4,
     "fields": {
       "title": "First featured title",
+      "slug_name": "first-featured-title",
       "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "site": 2,
@@ -126,6 +130,7 @@
     "pk": 5,
     "fields": {
       "title": "Second featured title",
+      "slug_name": "second-featured-title",
       "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "site": 2,
@@ -141,6 +146,7 @@
     "pk": 6,
     "fields": {
       "title": "Third featured title",
+      "slug_name": "third-featured-title",
       "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
       "site": 2,

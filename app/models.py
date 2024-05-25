@@ -121,6 +121,8 @@ class Price(models.Model):
     title = models.CharField(max_length=100)
     cost = models.IntegerField()
 
+    link = models.URLField(blank=True, null=True)
+
     checked_features = models.JSONField(help_text="Features shown on card", default=list, blank=True)
     missing_features = models.JSONField(help_text="Missing features shown on card", default=list, blank=True) 
 
