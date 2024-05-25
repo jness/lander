@@ -148,7 +148,9 @@
                                             </li>
                                         {% endfor %}
                                     </ul>
-                                    <div class="d-grid"><a class="btn btn-outline-primary" href="#!">Choose plan</a></div>
+                                    {% if price.link %}
+                                    <div class="d-grid"><a class="btn btn-outline-primary" href="{{ price.link }}">Choose plan</a></div>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
