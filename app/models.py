@@ -42,6 +42,9 @@ class Landing(models.Model):
     page_title = models.CharField(help_text="Sets site html title tag", max_length=100)
     heading = models.CharField(help_text="Sets site heading in banner", max_length=100)
     subheading = models.CharField(help_text="Sets site sub-heading in banner", max_length=100)
+
+    link = models.URLField(blank=True, null=True)
+
     footer = models.CharField(help_text="Sets site footer", max_length=100)
 
     # site color schema

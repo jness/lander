@@ -47,7 +47,9 @@
                     {% else %}
                     <h1 class="masthead-heading mb-0">{{ landing.heading }}</h1>
                     <h2 class="masthead-subheading mb-0">{{ landing.subheading }}</h2>
-                    <a id="learn-more-button" class="btn btn-primary btn-xl rounded-pill mt-5" href="#features">Learn More</a>
+                    {% if landing.link %}
+                    <a id="learn-more-button" class="btn btn-primary btn-xl rounded-pill mt-5" href="{{ landing.link }}">Learn More</a>
+                    {% endif %}
                     {% endif %}
                 </div>
             </div>
