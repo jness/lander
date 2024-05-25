@@ -30,7 +30,7 @@ DEBUG = bool(int(os.getenv('DEBUG', 0)))
 # application hosts multiple sites
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ["http://django-burgers.com"]
+CSRF_TRUSTED_ORIGINS = ["http://django-tacos.com", "http://django-burgers.com"]
 
 # Toggle to enable one time password
 OTP_ENABLED = True
@@ -334,3 +334,6 @@ LOGGING = {
         },
     },
 }
+
+# load override settings
+from .settings_local import *
