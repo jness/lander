@@ -98,8 +98,6 @@ $ ./podman-launch.sh start
 
 ### Application initalization
 
-https://podman.io/
-
 When ready to run use the `init` command:
 
 ```
