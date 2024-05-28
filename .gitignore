@@ -10,3 +10,4 @@ postgres_data/
 logs/
 media/
 project/settings_local.py
+.coverage

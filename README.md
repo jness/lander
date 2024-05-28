@@ -180,3 +180,80 @@ django ALL=NOPASSWD: /usr/bin/tee /etc/cron.d/django_*
 django ALL=NOPASSWD: /usr/bin/rm -rf /etc/cron.d/django_*
 ...
 ```
+
+### Test Cases
+
+Django’s unit tests uses the Python standard library module `unittest`.
+
+Lander's test cases are located in `app/tests.py`.
+
+To run tests simply leverage **manage.py** test subcommand:
+
+```
+$ ./manage.py test
+Found 3 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.026s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+Since Django uses Python's standard library unittest, we can also leverage
+the Python's 3rd party package `coverage`.
+
+```
+$ pip install coverage
+```
+
+Once installed re-run your test using **coverage**:
+
+```
+$ coverage run --source='.' manage.py test
+Found 3 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.081s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+Then use the coverage `report` sub-command to view the results:
+
+```
+$ coverage report
+Name                                  Stmts   Miss  Cover
+---------------------------------------------------------
+app/__init__.py                           0      0   100%
+app/admin.py                             87      3    97%
+app/api.py                               48      0   100%
+app/apps.py                               4      0   100%
+app/authentication_backends.py           14     14     0%
+app/context_processors.py                 5      0   100%
+app/forms.py                              6      0   100%
+app/middleware.py                        24      7    71%
+app/migrations/0001_initial.py           10      0   100%
+app/migrations/0002_price_link.py         4      0   100%
+app/migrations/0003_landing_link.py       4      0   100%
+app/migrations/__init__.py                0      0   100%
+app/models.py                           173     41    76%
+app/serializers.py                       55      0   100%
+app/tests.py                             28      0   100%
+app/urls.py                              21      0   100%
+app/views.py                             28     14    50%
+manage.py                                11      2    82%
+project/__init__.py                       0      0   100%
+project/asgi.py                           4      4     0%
+project/settings.py                      44      5    89%
+project/settings_local.py                 0      0   100%
+project/urls.py                           2      0   100%
+project/wsgi.py                           4      4     0%
+---------------------------------------------------------
+TOTAL                                   576     94    84%
+```
