@@ -19,89 +19,51 @@ and scheduling management commands using cron.
 
 ## Development (local)
 
-### Install Docker
+### Install with container environment
 
-https://docs.docker.com/get-docker/
+Lander is capable of running in many different runtimes,
+feel free to use which ever works best for you.
 
-### Startup
-
-Using the `docker-compose.yml` start your application:
-
-```
-$ docker-compose up
-```
-
-You are able to see the containers using the `ls` command:
-
-```
-$ docker-compose ls
-NAME                STATUS              CONFIG FILES
-lander              running(1)          /home/user/Git/lander/docker-compose.yaml
-```
-
-### Schema migrations
-
-On first run your database will need to run schema migrations:
-
->  You have 31 unapplied migration(s). Your project may not work properly until you apply the migrations for app(s): admin, app, auth, authtoken, contenttypes, otp_static, otp_totp, sessions, sites.
-
-```
-$ docker-compose exec web ./manage.py migrate
-```
-
-### Initial data
-
-The initial_data sets the **primary site** to domain `django-tacos.com`,
-a secondary site also exists under `django-burgers.com`.
-
-Only the primary site routes the web admin and api.
-
-```
-$ docker-compose exec web ./manage.py loaddata app/fixtures/initial_data.json
-```
-
-### Create super user
-
-Next create an administrative user which will have access to the admin portal and api web interface:
-
-```
-$ docker-compose exec web ./manage.py createsuperuser
-```
-
- ### Create OTP
-
-If `OTP_ENABLED` is set to **True** in `settings.py` you will need to setup a
-TOTP device, scan the QR code with which ever authenticator app you are like (something like Google Authenticator):
-
-```
-$ docker-compose exec web ./manage.py create_totp 1
-```
-
-### Install Podman
-
-https://podman.io/
+* https://docs.docker.com/get-docker/
+* https://podman.io/
 
 ### Startup
 
-Using the `podman-launch.sh` start your application:
+Using the `{runtime}-launch.sh` script for your container enviornment, build and start your application:
+
+> Use docker-lauch.sh for Docker, and podman-launch.sh for Podman.
 
 ```
-$ ./podman-launch.sh build
-$ ./podman-launch.sh start
+./{runtime}-launch.sh build
+./{runtime}-launch.sh start
 ```
 
-### Application initalization
+### Initialize
 
-When ready to run use the `init` command:
+On first run your database will need to run schema migrations, as well as creating the administrator user.
 
 ```
-$ ./podman-launch.sh init
+$ ./{runtime}-launch.sh init
+```
+
+
+### Create One Time Password (OTP)
+
+If `OTP_ENABLED` is set to **True** in `settings.py` you will need to setup a TOTP device, scan the QR code with which ever authenticator app you like (something like Google Authenticator):
+
+```
+$ ./{runtime}-launch.sh execute ./manage.py create_totp 1
 ```
 
 ### Access
 
-In order to utilize the initial example domains you will need to update
-your **/etc/hosts** to resolve locally:
+The initial data sets the **Primary Site** to domain `django-tacos.com`,
+a secondary site also exists under `django-burgers.com`.
+
+In order to utilize the initial domains you will need to update
+your **/etc/hosts** to resolve them locally.
+
+> Only the Primary Site routes the web admin and api.
 
 ```
 $ cat /etc/hosts
@@ -115,7 +77,7 @@ $ cat /etc/hosts
 
 ### API token
 
-From the admin iterface add a new **Authtoken.Token** for the user:
+From the admin iterface generate a new **Authtoken.Token** for the user:
 
 * [http://django-tacos.com:8000/admin/authtoken/tokenproxy/](http://django-tacos.com:8000/admin/authtoken/tokenproxy/)
 
@@ -137,10 +99,22 @@ $ curl -sLH 'Authorization: Token 42abc.................' http://django-tacos.co
 ]
 ```
 
+### Application access
+
+```
+./{runtime}-launch.sh execute ./manage.py shell
+
+Python 3.12.0 (main, Oct 12 2023, 00:42:11) [GCC 12.2.0] on linux
+>>>
+>>> from app.models import Template
+>>> Template.objects.get(id=1)
+<Template: one_page_wonder>
+```
+
 ### Database access
 
 ```
-$  docker-compose exec web ./manage.py dbshell
+$  ./{runtime}-launch.sh execute ./manage.py dbshell
 ```
 
 Once connected a familiar sqlite shell is shown:
@@ -192,7 +166,8 @@ Lander's test cases are located in `app/tests.py`.
 To run tests simply leverage **manage.py** test subcommand:
 
 ```
-$ ./manage.py test
+$ ./{runtime}-launch.sh execute ./manage.py test
+
 Found 3 test(s).
 Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
@@ -208,13 +183,13 @@ Since Django uses Python's standard library unittest, we can also leverage
 the Python's 3rd party package `coverage`.
 
 ```
-$ pip install coverage
+$ ./{runtime}-launch.sh execute pip install coverage
 ```
 
 Once installed re-run your test using **coverage**:
 
 ```
-$ coverage run --source='.' manage.py test
+$ ./{runtime}-launch.sh execute coverage run --source='.' manage.py test
 Found 3 test(s).
 Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
@@ -229,7 +204,7 @@ Destroying test database for alias 'default'...
 Then use the coverage `report` sub-command to view the results:
 
 ```
-$ coverage report
+$ ./{runtime}-launch.sh execute coverage report
 Name                                  Stmts   Miss  Cover
 ---------------------------------------------------------
 app/__init__.py                           0      0   100%

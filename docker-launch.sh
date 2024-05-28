@@ -2,7 +2,7 @@
 
 # Whenever command is used incorrectly, print usage
 print_usage() {
-    echo "Usage: ./podman-launch.sh [build|start|init|restart|execute|stop|clean]"
+    echo "Usage: ./docker-launch.sh [build|start|init|restart|execute|stop|clean]"
     exit 1
 }
 
@@ -13,33 +13,29 @@ fi
 
 # Build container
 build_container() {
-    sudo podman build -t lander .
+    docker-compose build
 }
 
 # Start container
 start_container() {
-    sudo podman run --replace -d -p 8000:8000 \
-        --name lander \
-        --env-file .env -v .:/app -w /app \
-        lander bash -c "cron && python3 manage.py runserver 0.0.0.0:8000"
+    docker-compose up
 }
 
 # Initalize the application
 init_container() {
-    sudo podman exec lander python3 manage.py migrate
-    sudo podman exec lander python3 manage.py loaddata app/fixtures/initial_data.json
-    sudo podman exec -it lander python3 manage.py createsuperuser
+    docker-compose exec web ./manage.py migrate
+    docker-compose exec web ./manage.py loaddata app/fixtures/initial_data.json
+    docker-compose exec web ./manage.py createsuperuser
 }
 
 # Stop and remove containers 
 stop_container() {
-   sudo podman stop lander
-   sudo podman rm lander
+    docker-compose stop
 }
 
 # Run command in container
 execute_container() {
-    sudo podman exec -it lander $@
+    docker-compose exec web $@
 }
 
 # Command verb switch
@@ -56,7 +52,6 @@ case $1 in
     "restart")
         # Stop, remove, and then build and start containers
        stop_container
-       build_container
        start_container
     ;;
     "stop")
@@ -67,7 +62,7 @@ case $1 in
     ;;
     "clean")
         # Prune cache 
-        sudo podman system prune
+        docker-compose stop
         rm db.sqlite3
     ;;
     *)
