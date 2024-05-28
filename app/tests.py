@@ -112,3 +112,33 @@ class LandingTestCase(TestCase):
 
         # ensure we can save successfully
         self.assertTrue(obj.save)
+
+
+class ArticleTestCase(TestCase):
+
+    fixtures = ('app/fixtures/initial_data.json',)
+
+    def setUp(self):
+        pass
+
+    def test_model_article(self):
+        """
+        Test for the Article Model
+        """
+
+        obj = models.Article.objects.get(id=1)
+        self.assertEqual(obj.slug_name, 'first-featured-title')
+
+
+    def test_view_article(self):
+        """
+        Test the article render properly for each site
+        """
+
+        client = Client()
+        response = client.get("/articles/first-featured-title", headers={'Host': 'django-tacos.com'})
+        navbar = '<a class="navbar-brand" href="/">django-tacos</a>'
+        self.assertTrue(navbar in str(response.content))
+        # check proper author name for site article
+        content = 'Author: John Doe'
+        self.assertTrue(content in str(response.content))
