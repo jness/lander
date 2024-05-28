@@ -1,5 +1,7 @@
 # Lander
 
+![workflow](https://github.com/jness/lander/actions/workflows/main.yml/badge.svg)
+
 Django application for dynamically hosting multiple landing pages,
 and scheduling management commands using cron.
 
