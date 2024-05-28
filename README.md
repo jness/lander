@@ -46,6 +46,13 @@ On first run your database will need to run schema migrations, as well as creati
 $ ./{runtime}-launch.sh init
 ```
 
+### Stopping
+
+To stop your containers use your `{runtime}-launch.sh` script:
+
+```
+$ ./{runtime}-launch.sh stop
+```
 
 ### Create One Time Password (OTP)
 
