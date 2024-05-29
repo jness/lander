@@ -107,7 +107,7 @@
                         <div class="col-lg-4 mb-5 mb-lg-0 feature_div">
                             <h2 class="h4 fw-bolder">{{ feature.title }}</h2>
                             {% if feature.image %}
-                            <img src="{% get_media_prefix %}{{ feature.image.file }}" class="img-fluid img-thumbnail" style="margin-top: 1.2rem; margin-bottom: 1.2rem;">
+                            <a href="/articles/{{ feature.slug_name }}"><img src="{% get_media_prefix %}{{ feature.image.file }}" class="img-fluid img-thumbnail" style="margin-top: 1rem; margin-bottom: 1.2rem;"></a>
                             {% else %}
                             <img src="{% static 'app/assets/placeholder.png' %}" class="img-fluid img-thumbnail" style="margin-top: 1.2rem; margin-bottom: 1.2rem;">
                             {% endif %}
