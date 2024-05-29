@@ -1,8 +1,8 @@
 # Lander
 
 [![workflow](https://github.com/jness/lander/actions/workflows/main.yml/badge.svg)](https://github.com/jness/lander/actions/workflows/main.yml)
-[![Python](https://img.shields.io/badge/python-3.12-blue.svg)](https://www.python.org/)
-[![Django](https://img.shields.io/badge/django-5.0.5-blue.svg)](https://www.djangoproject.com/)
+[![Python](https://img.shields.io/badge/Python-3.12-blue.svg)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/Django-5.0.5-blue.svg)](https://www.djangoproject.com/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Django application for dynamically hosting multiple landing pages,
