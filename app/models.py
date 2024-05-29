@@ -85,7 +85,7 @@ class Article(models.Model):
     """
 
     class Meta:
-        ordering = ['-updated_at']
+        ordering = ['-created_at']
         unique_together = ("title", "site")
 
     title = models.CharField(max_length=200)
@@ -122,7 +122,7 @@ class Price(models.Model):
     """
 
     class Meta:
-        ordering = ['-updated_at']
+        ordering = ['cost']
 
     title = models.CharField(max_length=100)
     cost = models.IntegerField()
@@ -154,7 +154,7 @@ class Testimonial(models.Model):
     """
 
     class Meta:
-        ordering = ['-updated_at']
+        ordering = ['-created_at']
 
     content = models.TextField()
     author = models.CharField(max_length=100)
