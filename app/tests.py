@@ -142,3 +142,93 @@ class ArticleTestCase(TestCase):
         # check proper author name for site article
         content = 'Author: John Doe'
         self.assertTrue(content in str(response.content))
+
+
+class PriceTestCase(TestCase):
+
+    fixtures = ('app/fixtures/initial_data.json',)
+
+    def setUp(self):
+        pass
+
+    def test_model_price(self):
+        """
+        Test for the Price Model
+        """
+
+        obj = models.Price.objects.get(id=1)
+
+        self.assertEqual(obj.title, 'Free')
+        self.assertEqual(
+            obj.checked_features, 
+            ['1 users', '5GB storage', 'Unlimited public projects', 'Community access']
+        )
+
+    def test_view_price(self):
+        """
+        Test the price render properly for each site
+        """
+
+        client = Client()
+
+        # check proper navbar name for site
+        response = client.get("/", headers={'Host': 'django-tacos.com'})
+        price = '<span class="display-4 fw-bold">$0</span>'
+        self.assertTrue(price in str(response.content))
+
+
+class TestimonialTestCase(TestCase):
+
+    fixtures = ('app/fixtures/initial_data.json',)
+
+    def setUp(self):
+        pass
+
+    def test_model_testimonial(self):
+        """
+        Test for the Testimonial Model
+        """
+
+        obj = models.Testimonial.objects.get(id=1)
+        self.assertEqual(obj.author, 'Client Name, Location')
+
+    def test_view_testimonial(self):
+        """
+        Test the testimonial render properly for each site
+        """
+
+        client = Client()
+
+        # check proper navbar name for site
+        response = client.get("/", headers={'Host': 'django-tacos.com'})
+        testimonial = 'The whole team was a huge help with putting things together for our company and brand. We will be hiring them again in the near future for additional work!'
+        self.assertTrue(testimonial in str(response.content))
+
+
+class ContactTestCase(TestCase):
+
+    fixtures = ('app/fixtures/initial_data.json',)
+
+    def setUp(self):
+        pass
+
+    def test_model_contact(self):
+        """
+        Test for the Contact Model
+        """
+
+        # ensure contact form is enabled on landing
+        obj = models.Landing.objects.get(id=1)
+        self.assertTrue(obj.contact_enabled)
+
+    def test_view_contact(self):
+        """
+        Test the Contact render properly for each site
+        """
+
+        client = Client()
+
+        # check proper navbar name for site
+        response = client.get("/", headers={'Host': 'django-tacos.com'})
+        contact = '<!-- Contact section-->'
+        self.assertTrue(contact in str(response.content))
