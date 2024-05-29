@@ -28,6 +28,12 @@ jobs:
     - name: Install Coverage
       run: |
         pip install coverage
+    - name: Delete migrations
+      run: |
+        rm -rf app/migrations/00*.py
+    - name: Make fresh migrations
+      run: |
+        python manage.py makemigrations
     - name: Run Tests
       run: |
         coverage run --source='.' manage.py test
