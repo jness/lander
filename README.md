@@ -1,6 +1,7 @@
 # Lander
 
 [![workflow](https://github.com/jness/lander/actions/workflows/main.yml/badge.svg)](https://github.com/jness/lander/actions/workflows/main.yml)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 Django application for dynamically hosting multiple landing pages,
 and scheduling management commands using cron.
