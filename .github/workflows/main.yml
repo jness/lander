@@ -28,9 +28,6 @@ jobs:
     - name: Install Coverage
       run: |
         pip install coverage
-    - name: Run migrations
-      run: |
-        python manage.py migrate
     - name: Run Tests
       run: |
         coverage run --source='.' manage.py test
