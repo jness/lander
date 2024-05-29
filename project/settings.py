@@ -336,5 +336,5 @@ LOGGING = {
 }
 
 # load override settings
-if os.path.exists('settings_local.py'):
+if os.path.exists('project/settings_local.py'):
     from .settings_local import *
