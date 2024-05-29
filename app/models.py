@@ -2,6 +2,7 @@ import os
 
 from colorfield.fields import ColorField
 from django_summernote.fields import SummernoteTextFormField
+from django_summernote.models import Attachment
 
 from django.db import models
 from django.conf import settings
@@ -92,6 +93,8 @@ class Article(models.Model):
     summary = models.TextField()
     content = models.TextField()
     author = models.CharField(max_length=100)
+
+    image = models.ForeignKey(Attachment, on_delete=models.RESTRICT, blank=True, null=True)
 
     # add relation to django.contrib.sites.models.Site
     # https://docs.djangoproject.com/en/5.0/ref/contrib/sites/

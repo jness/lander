@@ -81,6 +81,15 @@
         <!-- Article -->
         {% if article %}
         <div class="container px-5 my-5 px-5">
+            {% if article.image %}
+                <center>
+                <img src="{% get_media_prefix %}{{ article.image.file }}" class="img-fluid img-thumbnail" style="margin-top: 1.2rem; margin-bottom: 1.2rem;">
+                </center>
+            {% else %}
+                <center>
+                <img src="{% static 'app/assets/placeholder.png' %}" class="img-fluid img-thumbnail" style="margin-top: 1.2rem; margin-bottom: 1.2rem;">
+                </center>
+            {% endif %}
             <p class="fw-lighter d-flex justify-content-end">Author: {{ article.author }}</p>
             <p class="fw-lighter d-flex justify-content-end">Updated: {{ article.created_at }}</p>
             <hr>
@@ -97,6 +106,11 @@
                     {% for feature in features %}
                         <div class="col-lg-4 mb-5 mb-lg-0 feature_div">
                             <h2 class="h4 fw-bolder">{{ feature.title }}</h2>
+                            {% if feature.image %}
+                            <img src="{% get_media_prefix %}{{ feature.image.file }}" class="img-fluid img-thumbnail" style="margin-top: 1.2rem; margin-bottom: 1.2rem;">
+                            {% else %}
+                            <img src="{% static 'app/assets/placeholder.png' %}" class="img-fluid img-thumbnail" style="margin-top: 1.2rem; margin-bottom: 1.2rem;">
+                            {% endif %}
                             <p>{{ feature.summary }}</p>
                             <a class="text-decoration-none" href="/articles/{{ feature.slug_name }}">
                                 Learn more
