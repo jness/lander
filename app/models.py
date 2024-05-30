@@ -92,7 +92,7 @@ class Article(models.Model):
     content = models.TextField()
     author = models.CharField(max_length=100)
 
-    image = models.FileField(upload_to="uploads/")
+    image = models.FileField(upload_to="uploads/", blank=True, null=True)
 
     # add relation to django.contrib.sites.models.Site
     # https://docs.djangoproject.com/en/5.0/ref/contrib/sites/
