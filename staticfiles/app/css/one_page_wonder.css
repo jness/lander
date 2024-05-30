@@ -10922,8 +10922,8 @@ header.masthead .bg-circle-3 {
 
 @media (min-width: 992px) {
   header.masthead {
-    padding-top: calc(10rem + 55px);
-    padding-bottom: 10rem;
+    padding-top: calc(16rem + 55px);
+    padding-bottom: 16rem;
   }
   header.masthead .masthead-content .masthead-heading {
     font-size: 6rem;
@@ -10964,4 +10964,20 @@ pre {
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.img-feature {
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+  border-radius: 5rem;
+}
+
+.img-feature:hover {
+  border-radius: 1rem;
+}
+
+.img-article {
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  max-width: 60%;
 }
