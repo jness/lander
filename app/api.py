@@ -1,9 +1,9 @@
-from django.contrib.auth.models import Group, User
+# from django.contrib.auth.models import Group, User
 from django.contrib.sites.models import Site
 
 from rest_framework import permissions, viewsets
-from rest_framework.authtoken.models import Token
-from django_otp.plugins.otp_totp.models import TOTPDevice
+# from rest_framework.authtoken.models import Token
+# from django_otp.plugins.otp_totp.models import TOTPDevice
 from django_summernote.models import Attachment
 
 from . import serializers
@@ -64,6 +64,15 @@ class TemplateViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
+class TagViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows templates to be viewed or edited.
+    """
+    queryset = models.Tag.objects.all()
+    serializer_class = serializers.TagSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
 class LandingViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows landings to be viewed or edited.
@@ -75,28 +84,19 @@ class LandingViewSet(viewsets.ModelViewSet):
 
 class ArticleViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows landings to be viewed or edited.
+    API endpoint that allows article to be viewed or edited.
     """
     queryset = models.Article.objects.all()
     serializer_class = serializers.ArticleSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 
-class PriceViewSet(viewsets.ModelViewSet):
+class ArticleBotViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows templates to be viewed or edited.
+    API endpoint that allows articlebot to be viewed or edited.
     """
-    queryset = models.Price.objects.all()
-    serializer_class = serializers.PriceSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-
-class TestimonialViewSet(viewsets.ModelViewSet):
-    """
-    API endpoint that allows templates to be viewed or edited.
-    """
-    queryset = models.Testimonial.objects.all()
-    serializer_class = serializers.TestimonialSerializer
+    queryset = models.ArticleBot.objects.all()
+    serializer_class = serializers.ArticleBotSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 

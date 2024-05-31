@@ -28,9 +28,11 @@ class ScheduledCommand(BaseCommand):
         """
 
         if error:
+            self.stdout.write(self.style.ERROR(message))
             self.logger.error(message)
             message = 'ERROR: ' + str(message)
         else:
+            self.stdout.write(self.style.SUCCESS(message))
             self.logger.info(message)
             message = 'INFO: ' + str(message)
 

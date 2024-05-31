@@ -1,9 +1,9 @@
-from django.contrib.auth.models import Group, User
+# from django.contrib.auth.models import Group, User
 from django.contrib.sites.models import Site
 
 from rest_framework import serializers
-from rest_framework.authtoken.models import Token
-from django_otp.plugins.otp_totp.models import TOTPDevice
+# from rest_framework.authtoken.models import Token
+# from django_otp.plugins.otp_totp.models import TOTPDevice
 from django_summernote.models import Attachment
 
 from . import models
@@ -56,6 +56,12 @@ class TemplateSerializer(serializers.HyperlinkedModelSerializer):
         read_only_fields = ('created_at', 'updated_at')
 
 
+class TagSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = models.Tag
+        fields = '__all__'
+        read_only_fields = ('created_at', 'updated_at')
+
 class LandingSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = models.Landing
@@ -70,16 +76,9 @@ class ArticleSerializer(serializers.HyperlinkedModelSerializer):
         read_only_fields = ('created_at', 'updated_at')
 
 
-class PriceSerializer(serializers.HyperlinkedModelSerializer):
+class ArticleBotSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = models.Price
-        fields = '__all__'
-        read_only_fields = ('created_at', 'updated_at')
-
-
-class TestimonialSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = models.Testimonial
+        model = models.ArticleBot
         fields = '__all__'
         read_only_fields = ('created_at', 'updated_at')
 

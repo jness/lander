@@ -127,7 +127,7 @@ class ArticleTestCase(TestCase):
         """
 
         obj = models.Article.objects.get(id=1)
-        self.assertEqual(obj.slug_name, 'first-featured-title')
+        self.assertEqual(obj.slug_name, 'revolutionize-taco-night-you-wont-believe-these-wild-chip-salsa-combos-at-guacnook')
 
 
     def test_view_article(self):
@@ -136,73 +136,12 @@ class ArticleTestCase(TestCase):
         """
 
         client = Client()
-        response = client.get("/articles/first-featured-title", headers={'Host': 'django-tacos.com'})
+        response = client.get("/articles/revolutionize-taco-night-you-wont-believe-these-wild-chip-salsa-combos-at-guacnook", headers={'Host': 'django-tacos.com'})
         navbar = '<a class="navbar-brand" href="/">django-tacos</a>'
         self.assertTrue(navbar in str(response.content))
         # check proper author name for site article
-        content = 'Author: John Doe'
+        content = 'Author: ChatGPT'
         self.assertTrue(content in str(response.content))
-
-
-class PriceTestCase(TestCase):
-
-    fixtures = ('app/fixtures/initial_data.json',)
-
-    def setUp(self):
-        pass
-
-    def test_model_price(self):
-        """
-        Test for the Price Model
-        """
-
-        obj = models.Price.objects.get(id=1)
-
-        self.assertEqual(obj.title, 'Free')
-        self.assertEqual(
-            obj.checked_features, 
-            ['1 users', '5GB storage', 'Unlimited public projects', 'Community access']
-        )
-
-    def test_view_price(self):
-        """
-        Test the price render properly for each site
-        """
-
-        client = Client()
-
-        # check proper navbar name for site
-        response = client.get("/", headers={'Host': 'django-tacos.com'})
-        price = '<span class="display-4 fw-bold">$0</span>'
-        self.assertTrue(price in str(response.content))
-
-
-class TestimonialTestCase(TestCase):
-
-    fixtures = ('app/fixtures/initial_data.json',)
-
-    def setUp(self):
-        pass
-
-    def test_model_testimonial(self):
-        """
-        Test for the Testimonial Model
-        """
-
-        obj = models.Testimonial.objects.get(id=1)
-        self.assertEqual(obj.author, 'Client Name, Location')
-
-    def test_view_testimonial(self):
-        """
-        Test the testimonial render properly for each site
-        """
-
-        client = Client()
-
-        # check proper navbar name for site
-        response = client.get("/", headers={'Host': 'django-tacos.com'})
-        testimonial = 'The whole team was a huge help with putting things together for our company and brand. We will be hiring them again in the near future for additional work!'
-        self.assertTrue(testimonial in str(response.content))
 
 
 class ContactTestCase(TestCase):

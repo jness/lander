@@ -36,8 +36,6 @@ def index(request):
     context = {
         'landing': landing,
         'features': models.Article.on_site.filter(published=True, featured=True),
-        'prices': models.Price.on_site.filter(enabled=True),
-        'testimonials': models.Testimonial.on_site.filter(enabled=True),
         'contact_form': contact_form
     }
 

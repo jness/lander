@@ -42,8 +42,8 @@
             <div class="masthead-content">
                 <div class="container px-5">
                     {% if article %}
-                    <h1 class="masthead-heading mb-0">{{ article.title }}</h1>
-                    <h2 class="masthead-subheading mb-0">{{ article.summary }}</h2>
+                    <h1 class="masthead-article">{{ article.title }}</h1>
+                    <p class="masthead-summary">{{ article.summary }}</p>
                     {% else %}
                     <h1 class="masthead-heading mb-0">{{ landing.heading }}</h1>
                     <h2 class="masthead-subheading mb-0">{{ landing.subheading }}</h2>
@@ -58,6 +58,54 @@
             <div class="bg-circle-3 bg-circle"></div>
             <div class="bg-circle-4 bg-circle"></div>
         </header>
+
+        <!-- Article -->
+        {% if article %}
+        <div class="container px-5 my-5 px-5">
+            {% if article.image %}
+                <center>
+                <img src="{% get_media_prefix %}{{ article.image }}" class="img-fluid img-article">
+                </center>
+            {% endif %}
+            <br>
+            <p class="fw-lighter d-flex justify-content-end">Author: {{ article.author }}</p>
+            <p class="fw-lighter d-flex justify-content-end">Updated: {{ article.created_at }}</p>
+            <hr>
+            <span class="article-content">{{ article.content|safe }}</span>
+            <hr>
+            <center>
+            {% for tag in article.tags.values %}
+            <button type="button" class="btn btn-primary btn-badge">{{ tag.name }}</button>
+            {% endfor %}
+            </center>
+        </div>
+        {% endif %}
+
+        <!-- Features section-->
+        {% if features %}
+        <section class="py-5 border-bottom" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    {% for feature in features %}
+                        <div class="col-lg-4 mb-5 mb-lg-0 feature_div">
+                            {% if feature.image %}
+                            <a href="/articles/{{ feature.slug_name }}"><img src="{% get_media_prefix %}{{ feature.image }}" class="img-fluid img-thumbnail img-feature"></a>
+                            {% endif %}
+                            <h2 class="h4 fw-bolder"><center><a class="text-decoration-none feature-title" href="/articles/{{ feature.slug_name }}">{{ feature.title }}</a></center></h2>
+                            <hr>
+                            <p>{{ feature.summary }}</p>
+                            <p class="d-flex justify-content-end">
+                            <a class="text-decoration-none" href="/articles/{{ feature.slug_name }}">
+                                Learn more
+                                <i class="bi bi-arrow-right"></i>
+                            </a>
+                            </p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        {% endif %}
 
         <!-- Thank you Modal -->
         <div class="modal" id="thankModal" tabindex="-1" role="dialog" aria-labelledby="thankModalTitle" aria-hidden="true">
@@ -77,133 +125,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Article -->
-        {% if article %}
-        <div class="container px-5 my-5 px-5">
-            {% if article.image %}
-                <center>
-                <img src="{% get_media_prefix %}{{ article.image }}" class="img-fluid img-article">
-                </center>
-            {% else %}
-                <center>
-                <img src="{% static 'app/assets/placeholder.png' %}" class="img-fluid img-article">
-                </center>
-            {% endif %}
-            <p class="fw-lighter d-flex justify-content-end">Author: {{ article.author }}</p>
-            <p class="fw-lighter d-flex justify-content-end">Updated: {{ article.created_at }}</p>
-            <hr>
-            {{ article.content|safe }}
-            <hr>
-        </div>
-        {% endif %}
-
-        <!-- Features section-->
-        {% if features %}
-        <section class="py-5 border-bottom" id="features">
-            <div class="container px-5 my-5">
-                <div class="row gx-5">
-                    {% for feature in features %}
-                        <div class="col-lg-4 mb-5 mb-lg-0 feature_div">
-                            {% if feature.image %}
-                            <a href="/articles/{{ feature.slug_name }}"><img src="{% get_media_prefix %}{{ feature.image }}" class="img-fluid img-feature"></a>
-                            {% else %}
-                            <img src="{% static 'app/assets/placeholder.png' %}" class="img-fluid img-feature">
-                            {% endif %}
-                            <h2 class="h4 fw-bolder">{{ feature.title }}</h2>
-                            <p>{{ feature.summary }}</p>
-                            <a class="text-decoration-none" href="/articles/{{ feature.slug_name }}">
-                                Learn more
-                                <i class="bi bi-arrow-right"></i>
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-        {% endif %}
-
-        {% if prices %}
-        <!-- Pricing section-->
-        <section class="bg-light py-5 border-bottom" id="prices">
-            <div class="container px-5 my-5">
-                <div class="text-center mb-5">
-                    <h2 class="fw-bolder">Pay as you grow</h2>
-                    <p class="lead mb-0">With our no hassle pricing plans</p>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    {% for price in prices %}
-                        <div class="col-lg-6 col-xl-4">
-                            <div class="card mb-5 mb-xl-0">
-                                <div class="card-body p-5">
-
-                                    {% if price.featured %}
-                                        <div class="small text-uppercase fw-bold">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            {{ price.title }}
-                                        </div>
-                                    {% else %}
-                                        <div class="small text-uppercase fw-bold text-muted">{{ price.title }}</div>
-                                    {% endif %}
-
-                                    <div class="mb-3">
-                                        <span class="display-4 fw-bold">${{ price.cost }}</span>
-                                        <span class="text-muted">/ mo.</span>
-                                    </div>
-                                    <ul class="list-unstyled mb-4">
-                                        {% for checked_feature in price.checked_features %}
-                                            <li class="mb-2">
-                                                <i class="bi bi-check text-primary"></i>
-                                                {{ checked_feature }}
-                                            </li>
-                                        {% endfor %}
-                                        {% for missing_feature in price.missing_features %}
-                                            <li class="mb-2 text-muted">
-                                                <i class="bi bi-x"></i>
-                                                {{ missing_feature }}
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                    {% if price.link %}
-                                    <div class="d-grid"><a class="btn btn-outline-primary" href="{{ price.link }}">Choose plan</a></div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-        {% endif %}
-        
-        {% if testimonials %}
-        <!-- Testimonials section-->
-        <section class="py-5 border-bottom" id="testimonials">
-            <div class="container px-5 my-5 px-5">
-                <div class="text-center mb-5">
-                    <h2 class="fw-bolder">Customer testimonials</h2>
-                    <p class="lead mb-0">Our customers love working with us</p>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                        {% for testimonial in testimonials %}
-                            <div class="card mb-4">
-                                <div class="card-body p-4">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
-                                        <div class="ms-4">
-                                            <p class="mb-1">{{ testimonial.content }}</p>
-                                            <div class="small text-muted">- {{ testimonial.author }}</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </section>
-        {% endif %}
 
         {% if landing.contact_enabled and contact_form %}
         <!-- Contact section-->

@@ -77,6 +77,23 @@ class Landing(models.Model):
         super(Landing, self).save(*args, **kwargs)
 
 
+class Tag(models.Model):
+    """
+    Tags for articles
+    """
+
+    class Meta:
+        ordering = ['-updated_at']
+
+    name = models.CharField(max_length=255, unique=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Article(models.Model):
     """
     Site specific articles
@@ -100,6 +117,8 @@ class Article(models.Model):
     objects = models.Manager()
     on_site = CurrentSiteManager()
 
+    tags = models.ManyToManyField(Tag)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -114,48 +133,28 @@ class Article(models.Model):
         super().save()
 
 
-class Price(models.Model):
+class ArticleBot(models.Model):
     """
-    Site specific prices
-    """
-
-    class Meta:
-        ordering = ['cost']
-
-    title = models.CharField(max_length=100)
-    cost = models.IntegerField()
-
-    link = models.URLField(blank=True, null=True)
-
-    checked_features = models.JSONField(help_text="Features shown on card", default=list, blank=True)
-    missing_features = models.JSONField(help_text="Missing features shown on card", default=list, blank=True) 
-
-    # add relation to django.contrib.sites.models.Site
-    # https://docs.djangoproject.com/en/5.0/ref/contrib/sites/
-    site = models.ForeignKey(Site, on_delete=models.CASCADE)
-    objects = models.Manager()
-    on_site = CurrentSiteManager()
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    featured = models.BooleanField(default=False)
-    enabled = models.BooleanField(default=True)
-
-    def __str__(self):
-        return self.title
-
-
-class Testimonial(models.Model):
-    """
-    Site specific testimonials
+    Site specific article bot
     """
 
     class Meta:
         ordering = ['-created_at']
+        unique_together = ("name", "site")
 
-    content = models.TextField()
-    author = models.CharField(max_length=100)
+    name = models.CharField(help_text="Name of the ArticleBot", max_length=100)
+
+    # fields to drive management/commands/create_ai_article
+    system_text = models.CharField(help_text="The role the ai will take when generating content", max_length=255)
+    title_text_template = models.CharField(help_text="The template used when asking ai to generate title", max_length=255)
+    user_text_template = models.CharField(help_text="The template used when asking ai to generate content", max_length=255)
+    subjects = models.JSONField(help_text="List of subjects/persons to select for content generation", default=list)
+    actions = models.JSONField(help_text="List of actions to select for content generation", default=list)
+    things = models.JSONField(help_text="List of things to select for content generation", default=list)
+    places = models.JSONField(help_text="List of places to select for content generation", default=list)
+
+    auto_publish = models.BooleanField(default=False)
+    auto_feature = models.BooleanField(default=False)
 
     # add relation to django.contrib.sites.models.Site
     # https://docs.djangoproject.com/en/5.0/ref/contrib/sites/
@@ -169,7 +168,7 @@ class Testimonial(models.Model):
     enabled = models.BooleanField(default=True)
 
     def __str__(self):
-        return self.author
+        return self.name
 
 
 class Contact(models.Model):

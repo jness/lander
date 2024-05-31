@@ -1,15 +1,16 @@
 import sys
 import json
 import requests
+from random import choice
 
 from django.conf import settings
 from django.contrib.sites.models import Site
 
 from . import ScheduledCommand
-from app.models import Schedule, Article
+from app.models import Schedule, Article, ArticleBot, Tag
 
 
-def ask_chatgpt(token, search_text):
+def ask_chatgpt(token, system_text, user_text):
     """
     Fetch from chatgpt
     """
@@ -21,13 +22,11 @@ def ask_chatgpt(token, search_text):
     }
 
     data = {
-        "model": "gpt-3.5-turbo",
+        "model": "gpt-4o",
         "temperature": 0.7,
         "messages": [
-            {
-                "role": "user",
-                "content": search_text
-            }
+            {"role": "system", "content": system_text},
+            {"role": "user", "content": user_text}
         ]
     }
 
@@ -44,7 +43,6 @@ class Command(ScheduledCommand):
 
     def add_arguments(self, parser):
         parser.add_argument("site_id", type=int)
-        parser.add_argument("topic", type=str)
 
     def handle(self, *args, **options):
 
@@ -56,30 +54,69 @@ class Command(ScheduledCommand):
             self.report_failure()
             sys.exit(1)
 
-        # wrap entire logic in try in order to log
-        # to our django models
         try:
             site_id = options["site_id"]
             site = Site.objects.get(id=site_id)
-            
-            topic = options["topic"]
+        except Site.DoesNotExist:
+            msg = 'Site not found.'
+            self.log(msg, error=True)
+            self.report_failure()
+            sys.exit(1)
 
-            # ask chatgpt to populate our content
-            title = ask_chatgpt(token, f'Create a captivating title {topic}')
-            content = ask_chatgpt(token, f'Create a blog post for "{title}" in html format')
-            summary = ask_chatgpt(token, f'Summarize "{content}"')
+        articlebots = ArticleBot.objects.filter(site=site, enabled=True)
+        if articlebots.count() < 1:
+            msg = 'No ArticleBot found for site, or none enabled.'
+            self.log(msg, error=True)
+            self.report_failure()
+            sys.exit(1)
+
+        # Pick a random ArticleBot
+        articlebot = choice(articlebots)
+        self.log(f"Using ArticleBot '{articlebot}'")
+
+        # wrap entire logic in try in order to log
+        # to our django models
+        try:
+
+            # get random inputs from ArticleBot
+            inputs = dict(
+                subjects = choice(articlebot.subjects),
+                actions = choice(articlebot.actions),
+                things = choice(articlebot.things),
+                places = choice(articlebot.places)
+            )
+
+            self.log(f"Generating content with the following inputs: f{inputs}")
+
+            # Get or create tags for article
+            _tags = [ i for i in inputs.values() ]
+            tags = [ Tag.objects.get_or_create(name=i)[0] for i in _tags ]
+
+            # format out user_text using our random inputs
+            title_text = articlebot.title_text_template.format(**inputs)
+            user_text = articlebot.user_text_template.format(**inputs)
+
+            # ask chatgpt to generate our content
+            title = ask_chatgpt(token, articlebot.system_text, f"'{title_text}'").strip('"')
+            content = ask_chatgpt(token, articlebot.system_text,
+                f"'{user_text}' titled '{title}', format with only html paragraphs, not metadata, and no title.")
+            summary = ask_chatgpt(token, articlebot.system_text,
+                f"In one or two sentences summarize: '{content}'")
 
             # save a new unpublished article
-            article = Article(title=title, content=content, summary=summary, author='ChatGPT', site=site, published=False)
+            article = Article(title=title, content=content, summary=summary, author='ChatGPT',
+                site=site, published=articlebot.auto_publish, featured=articlebot.auto_feature)
             article.save()
+
+            # apply our tags to the new article
+            article.tags.set(tags)
+
+            # log message to ScheduleLog is executed via schedule
+            msg = f'Successfully created article "{title}" for "{site}"'
+            self.log(msg)
+            self.report_success()
 
         except Exception as e:
             self.log(e, error=True)
             self.report_failure()
             sys.exit(1)
-
-        # log message to ScheduleLog is executed via schedule
-        msg = 'Successfully created article for site_id "%s"' % site_id
-        self.stdout.write(self.style.SUCCESS(msg))
-        self.log(msg)
-        self.report_success()

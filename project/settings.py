@@ -41,6 +41,9 @@ CRON_SCHEDULES_PATH = '/app'
 CRON_SCHEDULES_RUN_AS = 'root'  # change me!
 CRON_SCHEDULES_WITH_SUDO = False
 
+# ChatGPT API Token for management/commands/create_ai_article.py
+#OPENAI_API_KEY = 'sk-.........'
+
 # Application definition
 
 PRIMARY_SITE = 1
@@ -121,8 +124,8 @@ JAZZMIN_SETTINGS = {
         "app.template",
         "app.landing",
         "app.article",
-        "app.price",
-        "app.testimonial",
+        "app.tag",
+        "app.articlebot",
         "app.contact",
         "app.schedule",
         "app.schedulelog",
@@ -136,8 +139,8 @@ JAZZMIN_SETTINGS = {
         "app.landing": "fas fa-plane",
         "app.template": "fas fa-hashtag",
         "app.article": "fas fa-file",
-        "app.price": "fas fa-dollar-sign",
-        "app.testimonial": "fas fa-thumbs-up",
+        "app.tag": "fas fa-tag",
+        "app.articlebot": "fas fa-robot",
         "app.contact": "fas fa-comment",
         "app.schedule": "fas fa-clock",
         "app.schedulelog": "fas fa-glasses",

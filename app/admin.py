@@ -4,7 +4,6 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.models import Group
 
 from django_summernote.admin import SummernoteModelAdmin
-from django_summernote.models import Attachment
 from django_otp.plugins.otp_static.models import StaticDevice
 from django_otp.plugins.otp_totp.models import TOTPDevice
 
@@ -16,7 +15,7 @@ from . import models
 admin.site.unregister(Site)
 admin.site.unregister(Group)
 admin.site.unregister(StaticDevice)
-#admin.site.unregister(Attachment)
+
 
 # remove OTP models if disabled
 if not settings.OTP_ENABLED:
@@ -43,6 +42,16 @@ class TemplateAdmin(admin.ModelAdmin):
 admin.site.register(models.Template, TemplateAdmin)
 
 
+class TagAdmin(admin.ModelAdmin):
+    list_display = ["name", "created_at", "updated_at"]
+    list_display_links = ["name"]
+    search_fields = ["name"]
+    readonly_fields = ["id", "created_at", "updated_at"]
+    ordering = ["-updated_at"]
+
+admin.site.register(models.Tag, TagAdmin)
+
+
 class LandingAdmin(admin.ModelAdmin):
     list_display = ["site", "updated_at", "enabled"]
     list_display_links = ["site"]
@@ -53,48 +62,39 @@ class LandingAdmin(admin.ModelAdmin):
 admin.site.register(models.Landing, LandingAdmin)
 
 
-class PriceAdmin(admin.ModelAdmin):
-    list_display = ["site", "title", "cost", "updated_at", "featured", "enabled"]
-    list_display_links = ["site"]
-    list_filter = ["site__domain", "enabled"]
-    readonly_fields = ["id", "created_at", "updated_at"]
-    ordering = ["-updated_at"]
-
-admin.site.register(models.Price, PriceAdmin)
-
-
-class TestimonialAdmin(admin.ModelAdmin):
-    list_display = ["site", "short_content", "updated_at", "enabled"]
-    list_display_links = ["site"]
-    list_filter = ["site__domain", "enabled"]
-    readonly_fields = ["id", "created_at", "updated_at"]
-    ordering = ["-updated_at"]
-
-    def short_content(self, obj):
-        "shorten content for display"
-        return ' '.join(obj.content.split()[:20]) + "..."
-    short_content.short_description = 'content'
-
-admin.site.register(models.Testimonial, TestimonialAdmin)
-
-
 class ArticleAdmin(SummernoteModelAdmin):
-    list_display = ["site", "title", "author", "updated_at", "featured", "published"]
-    list_display_links = ["site"]
-    list_filter = ["site__domain", "featured", "published"]
+    list_display = ["title", "site", "author", "tag_names", "updated_at", "featured", "published"]
+    list_display_links = ["title"]
+    list_filter = ["site__domain", "tags", "featured", "published"]
     readonly_fields = ["id", "slug_name", "created_at", "updated_at"]
     ordering = ["-updated_at"]
+    filter_horizontal = ["tags",]
 
     summernote_fields = ('content',)
+
+    def tag_names(self, obj):
+        "List of tag names"
+        return [ i['name'] for i in obj.tags.values() ]
+    tag_names.short_description = 'tags'
 
 admin.site.register(models.Article, ArticleAdmin)
 
 
+class ArticleBotAdmin(SummernoteModelAdmin):
+    list_display = ["name", "site", "updated_at", "enabled"]
+    list_display_links = ["name"]
+    list_filter = ["site__domain", "enabled"]
+    readonly_fields = ["id", "created_at", "updated_at"]
+    ordering = ["-updated_at"]
+
+admin.site.register(models.ArticleBot, ArticleBotAdmin)
+
+
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ["site", "full_name", "message_short", "updated_at", "responded"]
-    list_display_links = ["site"]
+    list_display = ["email", "full_name", "message_short", "site", "updated_at", "responded"]
+    list_display_links = ["email"]
     list_filter = ["site__domain", "responded"]
-    readonly_fields = [ i.name for i in models.Contact._meta.fields ]  # make all fields readonly
+    readonly_fields = [ i.name for i in models.Contact._meta.fields if i.name != "responded" ]  # make all fields readonly
     ordering = ["-updated_at"]
 
     def message_short(self, obj):

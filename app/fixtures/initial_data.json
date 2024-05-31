@@ -32,15 +32,17 @@
       "page_title": "Delicious Tacos",
       "heading": "Dippable Edition",
       "subheading": "Nacho Fries join the already stacked lineup in the Deluxe Cravings Box.",
+      "link": null,
       "footer": "Copyright © Your Website 2024",
       "bs_navbar": "rgba(52,58,64,1)",
-      "bs_primary": "rgba(238,9,121,1)",
-      "bs_secondary": "rgba(255,106,0,1)",
+      "bs_primary": "rgba(0,92,83,1)",
+      "bs_secondary": "rgba(159,193,49,1)",
       "template": 1,
-      "contact_enabled": 1,
+      "contact_enabled": true,
       "site": 1,
       "created_at": "2024-05-11T02:36:26.835Z",
-      "updated_at": "2024-05-11T02:36:26.838Z"
+      "updated_at": "2024-05-31T19:47:51.114Z",
+      "enabled": true
     }
   },
   {
@@ -50,297 +52,140 @@
       "page_title": "Delicious Burgers",
       "heading": "Exclusive Burgers Deals",
       "subheading": "Try the New Bacon Cajun Ranch",
+      "link": null,
       "footer": "Copyright © Your Website 2024",
       "bs_navbar": "rgba(52,58,64,1)",
       "bs_primary": "rgba(68,238,88,1)",
       "bs_secondary": "rgba(168,36,255,1)",
-      "contact_enabled": 1,
       "template": 1,
+      "contact_enabled": true,
       "site": 2,
       "created_at": "2024-05-11T03:58:53.910Z",
-      "updated_at": "2024-05-13T15:35:59.964Z"
+      "updated_at": "2024-05-13T15:35:59.964Z",
+      "enabled": true
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 1,
+    "fields": {
+      "name": "GuacNook",
+      "created_at": "2024-05-31T20:12:07.671Z",
+      "updated_at": "2024-05-31T20:12:07.671Z"
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 2,
+    "fields": {
+      "name": "Diego Ramirez",
+      "created_at": "2024-05-31T20:12:57.397Z",
+      "updated_at": "2024-05-31T20:12:57.397Z"
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 3,
+    "fields": {
+      "name": "Experiment with different fillings",
+      "created_at": "2024-05-31T20:12:57.409Z",
+      "updated_at": "2024-05-31T20:12:57.409Z"
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 4,
+    "fields": {
+      "name": "Chips and salsa",
+      "created_at": "2024-05-31T20:12:57.420Z",
+      "updated_at": "2024-05-31T20:12:57.420Z"
     }
   },
   {
     "model": "app.article",
     "pk": 1,
     "fields": {
-      "title": "First featured title",
-      "slug_name": "first-featured-title",
-      "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
+      "title": "Revolutionize Taco Night: You Won't Believe These Wild Chip & Salsa Combos at GuacNook!",
+      "slug_name": "revolutionize-taco-night-you-wont-believe-these-wild-chip-salsa-combos-at-guacnook",
+      "summary": "Diego Ramirez is revolutionizing the taco scene at GuacNook with his inventive fillings and unique chip and salsa pairings, offering everything from sweet potato chips with smoky pineapple-habanero salsa to roasted beet chips with creamy avocado-cilantro salsa. Whether you’re a traditionalist or an adventurous eater, his bold flavors and creative combinations are sure to make your taste buds dance.",
+      "content": "<p>Diego Ramirez has been shaking up the taco scene with his innovative approach to fillings, and now he's turning his culinary creativity towards chips and salsa at the renowned GuacNook. If you thought taco night was exciting before, prepare to have your taste buds blown away!</p>\n\n<p>From the moment you step into GuacNook, the vibrant atmosphere invites you to embark on a flavor adventure. Diego’s latest experiment is all about pairing unconventional salsa ingredients with a variety of homemade chips. Imagine the crunch and the burst of flavors that make every bite an experience to remember.</p>\n\n<p>Let’s start with the basics. Diego’s signature tortilla chips are a staple, but he doesn’t stop there. He’s introduced an array of chips made from sweet potatoes, plantains, and even beets. Each chip has its own unique texture and taste, setting the stage for an unforgettable salsa pairing.</p>\n\n<p>Speaking of salsas, Diego’s creativity knows no bounds. Picture this: a smoky pineapple-habanero salsa that perfectly complements the earthy sweetness of sweet potato chips. Or how about a tangy mango-jalapeño salsa that adds a refreshing kick to crispy plantain chips? The combinations are endless and each one more delicious than the last.</p>\n\n<p>Diego’s boldest experiment yet might be his roasted beet chips paired with a creamy avocado-cilantro salsa. The deep, earthy flavor of the beets contrasts beautifully with the smooth, herbaceous avocado, creating a harmony of flavors that’s both surprising and delightful.</p>\n\n<p>For those who love a bit of heat, the chipotle-lime salsa paired with traditional tortilla chips is a must-try. The smoky, spicy notes of the chipotle are balanced by the zesty lime, making it a perfect match for the crisp, salty chips.</p>\n\n<p>Of course, no chip and salsa experience at GuacNook would be complete without trying Diego’s classic guacamole. Made with the freshest avocados, a hint of lime, and a sprinkle of sea salt, it’s the perfect dip for any chip. Pair it with any of Diego’s inventive chip creations and you’ve got a match made in taco night heaven.</p>\n\n<p>Diego Ramirez’s experimental approach at GuacNook is redefining what we know about chips and salsa. Whether you’re a traditionalist or an adventurous eater, there’s something for everyone to enjoy. So next taco night, take a page from Diego’s playbook and try these wild chip and salsa combos. Your taste buds will thank you!</p>\n\n<p>Ready to revolutionize your taco night? Head to GuacNook and dive into Diego Ramirez's world of innovative fillings and unforgettable chip and salsa pairings. It’s a culinary experiment you won’t want to miss!</p>",
+      "author": "ChatGPT",
+      "image": "",
       "site": 1,
-      "author": "John Doe",
-      "created_at": "2024-05-11T03:58:53.910Z",
-      "updated_at": "2024-05-13T15:35:59.964Z",
-      "featured": 1,
-      "published": 1
+      "created_at": "2024-05-31T20:13:10.876Z",
+      "updated_at": "2024-05-31T20:13:10.876Z",
+      "featured": true,
+      "published": true,
+      "tags": [
+        1,
+        2,
+        3,
+        4
+      ]
     }
   },
   {
-    "model": "app.article",
-    "pk": 2,
-    "fields": {
-      "title": "Second featured title",
-      "slug_name": "second-featured-title",
-      "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "site": 1,
-      "author": "John Doe",
-      "created_at": "2024-05-11T03:58:53.910Z",
-      "updated_at": "2024-05-13T15:35:59.964Z",
-      "featured": 1,
-      "published": 1
-    }
-  },
-  {
-    "model": "app.article",
-    "pk": 3,
-    "fields": {
-      "title": "Third featured title",
-      "slug_name": "third-featured-title",
-      "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "site": 1,
-      "author": "John Doe",
-      "created_at": "2024-05-11T03:58:53.910Z",
-      "updated_at": "2024-05-13T15:35:59.964Z",
-      "featured": 1,
-      "published": 1
-    }
-  },
-  {
-    "model": "app.article",
-    "pk": 4,
-    "fields": {
-      "title": "First featured title",
-      "slug_name": "first-featured-title",
-      "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "site": 2,
-      "author": "John Doe",
-      "created_at": "2024-05-11T03:58:53.910Z",
-      "updated_at": "2024-05-13T15:35:59.964Z",
-      "featured": 1,
-      "published": 1
-    }
-  },
-  {
-    "model": "app.article",
-    "pk": 5,
-    "fields": {
-      "title": "Second featured title",
-      "slug_name": "second-featured-title",
-      "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "site": 2,
-      "author": "John Doe",
-      "created_at": "2024-05-11T03:58:53.910Z",
-      "updated_at": "2024-05-13T15:35:59.964Z",
-      "featured": 1,
-      "published": 1
-    }
-  },
-  {
-    "model": "app.article",
-    "pk": 6,
-    "fields": {
-      "title": "Third featured title",
-      "slug_name": "third-featured-title",
-      "summary": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "content": "Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.",
-      "site": 2,
-      "author": "John Doe",
-      "created_at": "2024-05-11T03:58:53.910Z",
-      "updated_at": "2024-05-13T15:35:59.964Z",
-      "featured": 1,
-      "published": 1
-    }
-  },
-  {
-    "model": "app.price",
+    "model": "app.articlebot",
     "pk": 1,
     "fields": {
-      "title": "Free",
-      "cost": 0,
-      "checked_features": [
-        "1 users",
-        "5GB storage",
-        "Unlimited public projects",
-        "Community access"
+      "name": "Taco Author",
+      "system_text": "You are a trending blogger who loves cooking tacos",
+      "title_text_template": "Write a click bait title about \"The {actions} {things} in the {places}\".",
+      "user_text_template": "the {subjects} {actions} with a {things} at the {places}",
+      "subjects": [
+        "Juan Martinez",
+        "Maria Hernandez",
+        "Diego Ramirez",
+        "Elena Chavez",
+        "Miguel Rodriguez"
       ],
-      "missing_features": [
-        "Unlimited private projects",
-        "Dedicated support",
-        "Free linked domain",
-        "Monthly status reports"
+      "actions": [
+        "Eat them",
+        "Share them with friends",
+        "Experiment with different fillings",
+        "Host a taco-themed party",
+        "Create unique taco recipes"
       ],
+      "things": [
+        "Tacos",
+        "Burritos",
+        "Quesadillas",
+        "Chips and salsa",
+        "Mexican rice and beans"
+      ],
+      "places": [
+        "TacoTrove",
+        "SalsaSizzle",
+        "GuacNook",
+        "SpiceHaven",
+        "TacoTemple"
+      ],
+      "auto_publish": true,
+      "auto_feature": true,
       "site": 1,
-      "created_at": "2024-05-16T02:08:28.803Z",
-      "updated_at": "2024-05-16T02:17:13.150Z",
-      "featured": false
+      "created_at": "2024-05-31T17:54:49.628Z",
+      "updated_at": "2024-05-31T20:12:48.491Z",
+      "enabled": true
     }
   },
   {
-    "model": "app.price",
-    "pk": 2,
-    "fields": {
-      "title": "Pro",
-      "cost": 9,
-      "checked_features": [
-        "5 users",
-        "5GB storage",
-        "Unlimited public projects",
-        "Community access",
-        "Unlimited private projects",
-        "Dedicated support",
-        "Free linked domain"
-      ],
-      "missing_features": [
-        "Monthly status reports "
-      ],
-      "site": 1,
-      "created_at": "2024-05-16T02:19:06.418Z",
-      "updated_at": "2024-05-16T02:19:06.418Z",
-      "featured": true
-    }
-  },
-  {
-    "model": "app.price",
-    "pk": 3,
-    "fields": {
-      "title": "Enterprise",
-      "cost": 49,
-      "checked_features": [
-        "5 users",
-        "5GB storage",
-        "Unlimited public projects",
-        "Community access",
-        "Unlimited private projects",
-        "Dedicated support",
-        "Free linked domain",
-        "Monthly status reports"
-      ],
-      "missing_features": [],
-      "site": 1,
-      "created_at": "2024-05-16T02:21:21.064Z",
-      "updated_at": "2024-05-16T02:21:54.483Z",
-      "featured": false
-    }
-  },
-  {
-    "model": "app.price",
-    "pk": 4,
-    "fields": {
-      "title": "Free",
-      "cost": 0,
-      "checked_features": [
-        "1 users",
-        "5GB storage",
-        "Unlimited public projects",
-        "Community access"
-      ],
-      "missing_features": [
-        "Unlimited private projects",
-        "Dedicated support",
-        "Free linked domain",
-        "Monthly status reports"
-      ],
-      "site": 2,
-      "created_at": "2024-05-16T02:08:28.803Z",
-      "updated_at": "2024-05-16T02:17:13.150Z",
-      "featured": false
-    }
-  },
-  {
-    "model": "app.price",
-    "pk": 5,
-    "fields": {
-      "title": "Pro",
-      "cost": 9,
-      "checked_features": [
-        "5 users",
-        "5GB storage",
-        "Unlimited public projects",
-        "Community access",
-        "Unlimited private projects",
-        "Dedicated support",
-        "Free linked domain"
-      ],
-      "missing_features": [
-        "Monthly status reports "
-      ],
-      "site": 2,
-      "created_at": "2024-05-16T02:19:06.418Z",
-      "updated_at": "2024-05-16T02:19:06.418Z",
-      "featured": true
-    }
-  },
-  {
-    "model": "app.price",
-    "pk": 6,
-    "fields": {
-      "title": "Enterprise",
-      "cost": 49,
-      "checked_features": [
-        "5 users",
-        "5GB storage",
-        "Unlimited public projects",
-        "Community access",
-        "Unlimited private projects",
-        "Dedicated support",
-        "Free linked domain",
-        "Monthly status reports"
-      ],
-      "missing_features": [],
-      "site": 2,
-      "created_at": "2024-05-16T02:21:21.064Z",
-      "updated_at": "2024-05-16T02:21:54.483Z",
-      "featured": false
-    }
-  },
-  {
-    "model": "app.testimonial",
+    "model": "app.schedule",
     "pk": 1,
     "fields": {
-      "content": "Thank you for putting together such a great product. We loved working with you and the whole team, and we will be recommending you to others!",
-      "author": "Client Name, Location",
-      "site": 1,
-      "created_at": "2024-05-16T02:35:44.204Z",
-      "updated_at": "2024-05-16T02:35:44.205Z"
-    }
-  },
-  {
-    "model": "app.testimonial",
-    "pk": 2,
-    "fields": {
-      "content": "The whole team was a huge help with putting things together for our company and brand. We will be hiring them again in the near future for additional work!",
-      "author": "Client Name, Location",
-      "site": 1,
-      "created_at": "2024-05-16T02:36:00.339Z",
-      "updated_at": "2024-05-16T02:36:00.339Z"
-    }
-  },
-  {
-    "model": "app.testimonial",
-    "pk": 3,
-    "fields": {
-      "content": "Thank you for putting together such a great product. We loved working with you and the whole team, and we will be recommending you to others!",
-      "author": "Client Name, Location",
-      "site": 2,
-      "created_at": "2024-05-16T02:35:44.204Z",
-      "updated_at": "2024-05-16T02:35:44.205Z"
-    }
-  },
-  {
-    "model": "app.testimonial",
-    "pk": 4,
-    "fields": {
-      "content": "The whole team was a huge help with putting things together for our company and brand. We will be hiring them again in the near future for additional work!",
-      "author": "Client Name, Location",
-      "site": 2,
-      "created_at": "2024-05-16T02:36:00.339Z",
-      "updated_at": "2024-05-16T02:36:00.339Z"
+      "name": "Taco Author Schedule",
+      "command": "create_ai_article",
+      "args": "1",
+      "interrupter": "/usr/local/bin/python",
+      "minute": "*",
+      "hour": "*",
+      "day_of_month": "*",
+      "month": "*",
+      "day_of_week": "*",
+      "created_at": "2024-05-31T19:39:06.220Z",
+      "updated_at": "2024-05-31T20:08:17.165Z",
+      "last_success_at": "2024-05-31T19:40:18.846Z",
+      "last_failure_at": null,
+      "enabled": false
     }
   }
 ]
