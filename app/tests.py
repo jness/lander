@@ -74,12 +74,12 @@ class LandingTestCase(TestCase):
 
         # test for primary site
         obj = models.Landing.objects.get(id=1)
-        self.assertEqual(obj.page_title, 'Delicious Tacos')
+        self.assertEqual(obj.page_title, 'Taco Talk')
         self.assertEqual(obj.site, self.primary_site)
 
         # test for secondary site
         obj = models.Landing.objects.get(id=2)
-        self.assertEqual(obj.page_title, 'Delicious Burgers')
+        self.assertEqual(obj.page_title, 'Burger Buzz')
         self.assertEqual(obj.site, self.secondary_site)
 
     def test_multiple_landing_same_site(self):

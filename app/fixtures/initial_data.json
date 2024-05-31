@@ -29,9 +29,9 @@
     "model": "app.landing",
     "pk": 1,
     "fields": {
-      "page_title": "Delicious Tacos",
-      "heading": "Dippable Edition",
-      "subheading": "Nacho Fries join the already stacked lineup in the Deluxe Cravings Box.",
+      "page_title": "Taco Talk",
+      "heading": "Taco Talk",
+      "subheading": "Sizzling Trends and Flavorful Fixings: Exploring the World of Tacos.",
       "link": null,
       "footer": "Copyright © Your Website 2024",
       "bs_navbar": "rgba(52,58,64,1)",
@@ -41,7 +41,7 @@
       "contact_enabled": true,
       "site": 1,
       "created_at": "2024-05-11T02:36:26.835Z",
-      "updated_at": "2024-05-31T19:47:51.114Z",
+      "updated_at": "2024-05-31T20:52:19.018Z",
       "enabled": true
     }
   },
@@ -49,19 +49,19 @@
     "model": "app.landing",
     "pk": 2,
     "fields": {
-      "page_title": "Delicious Burgers",
-      "heading": "Exclusive Burgers Deals",
-      "subheading": "Try the New Bacon Cajun Ranch",
+      "page_title": "Burger Buzz",
+      "heading": "Burger Buzz",
+      "subheading": "Grill Masters Unite: Unveiling the Latest Burger Creations and Culinary Innovations",
       "link": null,
       "footer": "Copyright © Your Website 2024",
       "bs_navbar": "rgba(52,58,64,1)",
-      "bs_primary": "rgba(68,238,88,1)",
-      "bs_secondary": "rgba(168,36,255,1)",
+      "bs_primary": "rgba(217,146,59,1)",
+      "bs_secondary": "rgba(166,3,3,1)",
       "template": 1,
       "contact_enabled": true,
       "site": 2,
       "created_at": "2024-05-11T03:58:53.910Z",
-      "updated_at": "2024-05-13T15:35:59.964Z",
+      "updated_at": "2024-05-31T20:53:39.472Z",
       "enabled": true
     }
   },
@@ -102,25 +102,134 @@
     }
   },
   {
+    "model": "app.tag",
+    "pk": 5,
+    "fields": {
+      "name": "Miguel Rodriguez",
+      "created_at": "2024-05-31T20:28:51.309Z",
+      "updated_at": "2024-05-31T20:28:51.309Z"
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 6,
+    "fields": {
+      "name": "Create unique taco recipes",
+      "created_at": "2024-05-31T20:28:51.323Z",
+      "updated_at": "2024-05-31T20:28:51.323Z"
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 7,
+    "fields": {
+      "name": "Tacos",
+      "created_at": "2024-05-31T20:28:51.335Z",
+      "updated_at": "2024-05-31T20:28:51.335Z"
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 8,
+    "fields": {
+      "name": "TacoTemple",
+      "created_at": "2024-05-31T20:28:51.345Z",
+      "updated_at": "2024-05-31T20:28:51.345Z"
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 9,
+    "fields": {
+      "name": "Maria Hernandez",
+      "created_at": "2024-05-31T20:29:07.321Z",
+      "updated_at": "2024-05-31T20:29:07.321Z"
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 10,
+    "fields": {
+      "name": "Eat them",
+      "created_at": "2024-05-31T20:29:07.335Z",
+      "updated_at": "2024-05-31T20:29:07.335Z"
+    }
+  },
+  {
+    "model": "app.tag",
+    "pk": 11,
+    "fields": {
+      "name": "SpiceHaven",
+      "created_at": "2024-05-31T20:29:07.347Z",
+      "updated_at": "2024-05-31T20:29:07.347Z"
+    }
+  },
+  {
     "model": "app.article",
     "pk": 1,
     "fields": {
       "title": "Revolutionize Taco Night: You Won't Believe These Wild Chip & Salsa Combos at GuacNook!",
       "slug_name": "revolutionize-taco-night-you-wont-believe-these-wild-chip-salsa-combos-at-guacnook",
       "summary": "Diego Ramirez is revolutionizing the taco scene at GuacNook with his inventive fillings and unique chip and salsa pairings, offering everything from sweet potato chips with smoky pineapple-habanero salsa to roasted beet chips with creamy avocado-cilantro salsa. Whether you’re a traditionalist or an adventurous eater, his bold flavors and creative combinations are sure to make your taste buds dance.",
-      "content": "<p>Diego Ramirez has been shaking up the taco scene with his innovative approach to fillings, and now he's turning his culinary creativity towards chips and salsa at the renowned GuacNook. If you thought taco night was exciting before, prepare to have your taste buds blown away!</p>\n\n<p>From the moment you step into GuacNook, the vibrant atmosphere invites you to embark on a flavor adventure. Diego’s latest experiment is all about pairing unconventional salsa ingredients with a variety of homemade chips. Imagine the crunch and the burst of flavors that make every bite an experience to remember.</p>\n\n<p>Let’s start with the basics. Diego’s signature tortilla chips are a staple, but he doesn’t stop there. He’s introduced an array of chips made from sweet potatoes, plantains, and even beets. Each chip has its own unique texture and taste, setting the stage for an unforgettable salsa pairing.</p>\n\n<p>Speaking of salsas, Diego’s creativity knows no bounds. Picture this: a smoky pineapple-habanero salsa that perfectly complements the earthy sweetness of sweet potato chips. Or how about a tangy mango-jalapeño salsa that adds a refreshing kick to crispy plantain chips? The combinations are endless and each one more delicious than the last.</p>\n\n<p>Diego’s boldest experiment yet might be his roasted beet chips paired with a creamy avocado-cilantro salsa. The deep, earthy flavor of the beets contrasts beautifully with the smooth, herbaceous avocado, creating a harmony of flavors that’s both surprising and delightful.</p>\n\n<p>For those who love a bit of heat, the chipotle-lime salsa paired with traditional tortilla chips is a must-try. The smoky, spicy notes of the chipotle are balanced by the zesty lime, making it a perfect match for the crisp, salty chips.</p>\n\n<p>Of course, no chip and salsa experience at GuacNook would be complete without trying Diego’s classic guacamole. Made with the freshest avocados, a hint of lime, and a sprinkle of sea salt, it’s the perfect dip for any chip. Pair it with any of Diego’s inventive chip creations and you’ve got a match made in taco night heaven.</p>\n\n<p>Diego Ramirez’s experimental approach at GuacNook is redefining what we know about chips and salsa. Whether you’re a traditionalist or an adventurous eater, there’s something for everyone to enjoy. So next taco night, take a page from Diego’s playbook and try these wild chip and salsa combos. Your taste buds will thank you!</p>\n\n<p>Ready to revolutionize your taco night? Head to GuacNook and dive into Diego Ramirez's world of innovative fillings and unforgettable chip and salsa pairings. It’s a culinary experiment you won’t want to miss!</p>",
+      "content": "<p>Diego Ramirez has been shaking up the taco scene with his innovative approach to fillings, and now he's turning his culinary creativity towards chips and salsa at the renowned GuacNook. If you thought taco night was exciting before, prepare to have your taste buds blown away!</p>\r\n\r\n<p>From the moment you step into GuacNook, the vibrant atmosphere invites you to embark on a flavor adventure. Diego’s latest experiment is all about pairing unconventional salsa ingredients with a variety of homemade chips. Imagine the crunch and the burst of flavors that make every bite an experience to remember.</p>\r\n\r\n<p>Let’s start with the basics. Diego’s signature tortilla chips are a staple, but he doesn’t stop there. He’s introduced an array of chips made from sweet potatoes, plantains, and even beets. Each chip has its own unique texture and taste, setting the stage for an unforgettable salsa pairing.</p>\r\n\r\n<p>Speaking of salsas, Diego’s creativity knows no bounds. Picture this: a smoky pineapple-habanero salsa that perfectly complements the earthy sweetness of sweet potato chips. Or how about a tangy mango-jalapeño salsa that adds a refreshing kick to crispy plantain chips? The combinations are endless and each one more delicious than the last.</p>\r\n\r\n<p>Diego’s boldest experiment yet might be his roasted beet chips paired with a creamy avocado-cilantro salsa. The deep, earthy flavor of the beets contrasts beautifully with the smooth, herbaceous avocado, creating a harmony of flavors that’s both surprising and delightful.</p>\r\n\r\n<p>For those who love a bit of heat, the chipotle-lime salsa paired with traditional tortilla chips is a must-try. The smoky, spicy notes of the chipotle are balanced by the zesty lime, making it a perfect match for the crisp, salty chips.</p>\r\n\r\n<p>Of course, no chip and salsa experience at GuacNook would be complete without trying Diego’s classic guacamole. Made with the freshest avocados, a hint of lime, and a sprinkle of sea salt, it’s the perfect dip for any chip. Pair it with any of Diego’s inventive chip creations and you’ve got a match made in taco night heaven.</p>\r\n\r\n<p>Diego Ramirez’s experimental approach at GuacNook is redefining what we know about chips and salsa. Whether you’re a traditionalist or an adventurous eater, there’s something for everyone to enjoy. So next taco night, take a page from Diego’s playbook and try these wild chip and salsa combos. Your taste buds will thank you!</p>\r\n\r\n<p>Ready to revolutionize your taco night? Head to GuacNook and dive into Diego Ramirez's world of innovative fillings and unforgettable chip and salsa pairings. It’s a culinary experiment you won’t want to miss!</p>",
       "author": "ChatGPT",
       "image": "",
       "site": 1,
       "created_at": "2024-05-31T20:13:10.876Z",
-      "updated_at": "2024-05-31T20:13:10.876Z",
+      "updated_at": "2024-05-31T20:55:54.748Z",
       "featured": true,
       "published": true,
       "tags": [
-        1,
-        2,
+        4,
         3,
-        4
+        1,
+        2
+      ]
+    }
+  },
+  {
+    "model": "app.article",
+    "pk": 2,
+    "fields": {
+      "title": "You Won't Believe the Insanely Delicious Taco Creations at TacoTemple!",
+      "slug_name": "you-wont-believe-the-insanely-delicious-taco-creations-at-tacotemple",
+      "summary": "Welcome, taco lovers! Join me at TacoTemple, where Chef Miguel Rodriguez is revolutionizing the taco game with creations like the Spicy Mango Shrimp Taco, vegan BBQ Pulled Jackfruit Taco, and the mind-blowing Chocolate Mole Chicken Taco—each bite promises to be an unforgettable flavor experience!",
+      "content": "<p>Welcome, taco enthusiasts! If you think you've tasted it all, think again. TacoTemple, led by the culinary genius Miguel Rodriguez, is redefining what it means to enjoy a taco. Today, I'm taking you on a mouthwatering journey through some of the most unique and insanely delicious taco creations you'll ever encounter. Brace yourselves, because #3 will absolutely blow your mind!</p>\r\n\r\n<p>First up, we have the Spicy Mango Shrimp Taco. This taco is a delightful blend of succulent shrimp marinated in a spicy mango sauce, topped with fresh cilantro, radishes, and a squeeze of lime. The sweet heat from the mango perfectly complements the savory shrimp, making each bite a flavor explosion.</p>\r\n\r\n<p>Next, let's dive into the BBQ Pulled Jackfruit Taco. This vegan-friendly option features tender, smoky jackfruit that's been slow-cooked in a rich BBQ sauce. It's paired with crunchy coleslaw and pickled red onions, creating a balanced and satisfying taco that even meat lovers can't resist.</p>\r\n\r\n<p>Hold onto your hats, because here comes the showstopper – the Chocolate Mole Chicken Taco. Yes, you read that right! This taco features juicy chicken strips smothered in a decadent chocolate mole sauce, garnished with crumbled queso fresco and toasted sesame seeds. The complex flavors of the mole sauce, with its hints of chocolate and spices, will leave you speechless and craving more.</p>\r\n\r\n<p>For those who love a bit of crunch, the Crispy Avocado Taco is a must-try. Creamy avocado slices are coated in a crispy panko crust and fried to perfection. These delightful chunks are nestled on a bed of shredded lettuce and drizzled with a tangy chipotle aioli, resulting in a taco that's both crunchy and creamy.</p>\r\n\r\n<p>And we can't forget the Beef Bulgogi Taco. This fusion masterpiece features tender slices of marinated Korean beef, topped with a fresh cucumber salad and a sprinkle of sesame seeds. The savory-sweet flavor of the bulgogi, combined with the refreshing cucumber, makes this taco a true standout.</p>\r\n\r\n<p>So there you have it, folks! These are just a few of the insanely delicious taco creations waiting for you at TacoTemple. Whether you're a traditionalist or an adventurous eater, Miguel Rodriguez and his team have something that will tantalize your taste buds and leave you coming back for more. Don't just take my word for it – head over to TacoTemple and prepare to be amazed!</p>",
+      "author": "ChatGPT",
+      "image": "",
+      "site": 1,
+      "created_at": "2024-05-31T20:29:04.043Z",
+      "updated_at": "2024-05-31T20:56:03.822Z",
+      "featured": true,
+      "published": true,
+      "tags": [
+        8,
+        7,
+        6,
+        5
+      ]
+    }
+  },
+  {
+    "model": "app.article",
+    "pk": 3,
+    "fields": {
+      "title": "Discover the Ultimate Taco Experience at SpiceHaven: You Won't Believe What Happens Next!",
+      "slug_name": "discover-the-ultimate-taco-experience-at-spicehaven-you-wont-believe-what-happens-next",
+      "summary": "I recently had the pleasure of experiencing SpiceHaven, a hidden gem where Chef Maria Hernandez transforms traditional Mexican tacos into extraordinary culinary masterpieces using fresh ingredients and bold spices. Her passion and innovative flair make every taco a perfect balance of flavors and textures, creating an unforgettable dining journey.",
+      "content": "<p>When it comes to tacos, we all have that one place that feels like a hidden gem. For me, that's SpiceHaven, a cozy spot that brings an explosion of flavors to every taco they serve. I recently had the incredible opportunity to sit down with Maria Hernandez, the culinary genius behind these mouth-watering creations, and what unfolded was nothing short of extraordinary.</p>\r\n\r\n<p>From the moment you step into SpiceHaven, you're enveloped in an atmosphere that feels both vibrant and welcoming. The decor is a delightful mix of traditional Mexican elements and modern touches, creating an ambiance that invites you to relax and savor every bite.</p>\r\n\r\n<p>Maria Hernandez, the master chef, greeted me with a warm smile and an infectious enthusiasm for her craft. She explained that her passion for cooking started in her grandmother's kitchen, where she learned the intricacies of authentic Mexican cuisine. It was there that she discovered the magic of combining fresh ingredients with bold spices to create something truly special.</p>\r\n\r\n<p>As Maria guided me through the menu, I was struck by the sheer variety of tacos available. There were traditional options like Carne Asada and Al Pastor, but also inventive creations that showcased Maria's creative flair. Each taco was a work of art, meticulously crafted to deliver a perfect balance of flavors and textures.</p>\r\n\r\n<p>One of the highlights of my visit was watching Maria in action. She moved with grace and precision, effortlessly blending ingredients and spices to create dishes that were nothing short of spectacular. It was clear that every taco was made with love and a deep respect for the culinary traditions she holds dear.</p>\r\n\r\n<p>But what truly set this experience apart was the unexpected twist that Maria had in store. As I bit into a beautifully presented taco, I was greeted with an explosion of flavors that took me on a culinary journey like no other. It was a fusion of traditional Mexican spices with a hint of unexpected ingredients that elevated the dish to a whole new level. I couldn't believe what I was tasting – it was as if Maria had unlocked a secret formula for taco perfection.</p>\r\n\r\n<p>Throughout our conversation, Maria shared stories of her culinary adventures and the inspiration behind her innovative recipes. Her passion for pushing boundaries and exploring new flavors was evident in every word. She spoke of her desire to create an unforgettable dining experience for her guests, and I can confidently say that she has succeeded.</p>\r\n\r\n<p>As I left SpiceHaven, I couldn't help but feel a sense of gratitude for the incredible journey I had just experienced. Maria Hernandez has redefined what it means to eat tacos, turning a simple dish into a masterpiece of culinary artistry. If you haven't yet visited SpiceHaven, do yourself a favor and make it your next dining destination. Trust me, you won't believe what happens next!</p>",
+      "author": "ChatGPT",
+      "image": "",
+      "site": 1,
+      "created_at": "2024-05-31T20:29:18.170Z",
+      "updated_at": "2024-05-31T20:56:08.368Z",
+      "featured": true,
+      "published": true,
+      "tags": [
+        11,
+        10,
+        9,
+        7
       ]
     }
   },

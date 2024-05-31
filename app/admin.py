@@ -53,7 +53,7 @@ admin.site.register(models.Tag, TagAdmin)
 
 
 class LandingAdmin(admin.ModelAdmin):
-    list_display = ["site", "updated_at", "enabled"]
+    list_display = ["site", "page_title", "updated_at", "enabled"]
     list_display_links = ["site"]
     list_filter = ["site__domain", "enabled"]
     readonly_fields = ["id", "created_at", "updated_at"]

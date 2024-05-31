@@ -15,9 +15,9 @@ and scheduling management commands using cron.
 
 ## Images
 
-![landing](docs/images/landing.png)
-![admin](docs/images/admin.png)
-![api](docs/images/api.png)
+![landing](docs/images/landing.jpg)
+![admin](docs/images/admin.jpg)
+![api](docs/images/api.jpg)
 
 
 ## Development (local)
