@@ -19,8 +19,7 @@ build_container() {
 # Start container
 start_container() {
     sudo podman run --replace -d -p 8000:8000 \
-        --name lander \
-        --env-file .env -v .:/app -w /app \
+        --name lander -v .:/app -w /app \
         lander bash -c "cron && python3 manage.py runserver 0.0.0.0:8000"
 }
 
