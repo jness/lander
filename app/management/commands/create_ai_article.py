@@ -143,7 +143,7 @@ class Command(ScheduledCommand):
 
             # get artwork for article
             self.log(f"Generating image for {image_text}")
-            image_url = ask_chatgpt_art(token, image_text)
+            image_url = ask_chatgpt_art(token, image_text + ", without text, artwork only.")
 
             # save path to media
             path = str(settings.MEDIA_ROOT) + '/uploads/' + article.slug_name + '.png'
