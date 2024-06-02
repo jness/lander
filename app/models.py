@@ -148,6 +148,7 @@ class ArticleBot(models.Model):
     system_text = models.CharField(help_text="The role the ai will take when generating content", max_length=255)
     title_text_template = models.CharField(help_text="The template used when asking ai to generate title", max_length=255)
     user_text_template = models.CharField(help_text="The template used when asking ai to generate content", max_length=255)
+    image_template = models.CharField(help_text="The template used when asking ai to generate image", max_length=255)
     subjects = models.JSONField(help_text="List of subjects/persons to select for content generation", default=list)
     actions = models.JSONField(help_text="List of actions to select for content generation", default=list)
     things = models.JSONField(help_text="List of things to select for content generation", default=list)
