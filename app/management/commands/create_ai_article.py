@@ -124,7 +124,10 @@ class Command(ScheduledCommand):
             image_text = articlebot.image_template.format(**inputs)
 
             # ask chatgpt to generate our content
-            title = ask_chatgpt(token, articlebot.system_text, f"'{title_text}'").strip('"')
+            title = ask_chatgpt(token, articlebot.system_text, f"'{title_text}'").
+            # remove any markup from title
+            title = title.strip('**"')
+            title = title.strip('"')
             content = ask_chatgpt(token, articlebot.system_text,
                 f"'{user_text}' titled '{title}', format with only html paragraphs, not metadata, and no title.")
             summary = ask_chatgpt(token, articlebot.system_text,
