@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>{% block title %}{{ landing.page_title }}{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'app/assets/favicon.ico' %}" />
+        <link href="{% static 'app/css/bootstrap-icons.css' %}" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'app/css/one_page_wonder.css' %}" rel="stylesheet" />
+        <!-- Bootswatch color schema-->
+        <!-- <link href="{% static 'app/css/lux.css' %}" rel="stylesheet" /> -->
+
+        <style>
+            :root {
+                --bs-primary: {{ landing.bs_primary }};
+                --bs-secondary: {{ landing.bs_secondary }};
+            }
+            .navbar-custom {
+                background-color: {{ landing.bs_navbar }};
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+        </style>
+
+    </head>
+
+    <body id="page-top">
+
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+            <div class="container px-5">
+                <a class="navbar-brand" href="/">{{ landing.site.name }}</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/articles/">Articles</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header-->
+        <header class="masthead text-center text-white">
+            <div class="masthead-content">
+                <div class="container px-5">
+                    {% block header %}
+                    {% endblock %}
+                </div>
+            </div>
+            <div class="bg-circle-1 bg-circle"></div>
+            <div class="bg-circle-2 bg-circle"></div>
+            <div class="bg-circle-3 bg-circle"></div>
+            <div class="bg-circle-4 bg-circle"></div>
+        </header>
+
+
+        {% block content %}
+        {% endblock %}
+
+        {% block contact %}
+        {% endblock %}
+
+        <!-- Footer-->
+        <footer class="py-3 bg-background">
+            <div class="container px-5"><p class="m-0 text-center small">{{ landing.footer }}</p></div>
+        </footer>
+
+        <!-- JQuery-->
+        <script src="{% static 'app/js/jquery.js' %}"></script>
+        <!-- Bootstrap core JS-->
+        <script src="{% static 'app/js/bootstrap.bundle.min.js' %}"></script>
+        <!-- Core theme JS-->
+        <script src="{% static 'app/js/one_page_wonder.js' %}"></script>
+
+    </body>
+</html>

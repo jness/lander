@@ -1,0 +1,30 @@
+{% extends "app/one_page_wonder/base.html" %}
+{% load static %}
+
+{% block title %}{{ landing.page_title }}{% endblock %}
+
+{% block header %}
+<h1 class="masthead-article">{{ article.title }}</h1>
+<p class="masthead-summary">{{ article.summary }}</p>
+{% endblock %}
+
+{% block content %}
+<!-- Article -->
+<div class="container px-5 my-5 px-5">
+    {% if article.image %}
+        <center>
+        <img src="{% get_media_prefix %}{{ article.image }}" class="img-fluid img-article">
+        </center>
+    {% endif %}
+    <br>
+    <p class="fw-lighter d-flex justify-content-end">Updated: {{ article.created_at }}</p>
+    <hr>
+    <span class="article-content">{{ article.content|safe }}</span>
+    <hr>
+    <center>
+    {% for tag in article.tags.values %}
+    <button type="button" class="btn btn-primary btn-badge">{{ tag.name }}</button>
+    {% endfor %}
+    </center>
+</div>
+{% endblock %}

@@ -35,7 +35,7 @@ class TemplateTestCase(TestCase):
         obj = models.Template.objects.get(id=1)
 
         self.assertEqual(obj.name, 'one_page_wonder')
-        self.assertEqual(obj.path, 'app/one_page_wonder.html')
+        self.assertEqual(obj.path, 'app/one_page_wonder')
 
         # ensure the template file exist in templates path
         _file = os.path.join(os.path.abspath('.'), 'templates/' + obj.path)
@@ -139,9 +139,6 @@ class ArticleTestCase(TestCase):
         response = client.get("/articles/revolutionize-taco-night-you-wont-believe-these-wild-chip-salsa-combos-at-guacnook", headers={'Host': 'django-tacos.com'})
         navbar = '<a class="navbar-brand" href="/">django-tacos</a>'
         self.assertTrue(navbar in str(response.content))
-        # check proper author name for site article
-        content = 'Author: ChatGPT'
-        self.assertTrue(content in str(response.content))
 
 
 class ContactTestCase(TestCase):

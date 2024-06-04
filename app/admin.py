@@ -33,11 +33,11 @@ admin.site.register(Site, SiteAdmin)
 
 
 class TemplateAdmin(admin.ModelAdmin):
-    list_display = ["name", "path", "updated_at"]
-    list_display_links = ["name"]
+    list_display = ["id", "name", "path", "created_at", "updated_at"]
+    list_display_links = ["id"]
     search_fields = ["name", "path"]
     readonly_fields = ["id", "created_at", "updated_at"]
-    ordering = ["-updated_at"]
+    ordering = ["-created_at"]
 
 admin.site.register(models.Template, TemplateAdmin)
 
@@ -47,27 +47,27 @@ class TagAdmin(admin.ModelAdmin):
     list_display_links = ["name"]
     search_fields = ["name"]
     readonly_fields = ["id", "created_at", "updated_at"]
-    ordering = ["-updated_at"]
+    ordering = ["-created_at"]
 
 admin.site.register(models.Tag, TagAdmin)
 
 
 class LandingAdmin(admin.ModelAdmin):
-    list_display = ["site", "page_title", "updated_at", "enabled"]
+    list_display = ["site", "page_title", "created_at", "updated_at", "enabled"]
     list_display_links = ["site"]
     list_filter = ["site__domain", "enabled"]
     readonly_fields = ["id", "created_at", "updated_at"]
-    ordering = ["-updated_at"]
+    ordering = ["-created_at"]
 
 admin.site.register(models.Landing, LandingAdmin)
 
 
 class ArticleAdmin(SummernoteModelAdmin):
-    list_display = ["title", "site", "author", "tag_names", "updated_at", "featured", "published"]
+    list_display = ["title", "site", "author", "tag_names", "created_at", "updated_at",  "published"]
     list_display_links = ["title"]
-    list_filter = ["site__domain", "tags", "featured", "published"]
+    list_filter = ["site__domain", "tags", "published"]
     readonly_fields = ["id", "slug_name", "created_at", "updated_at"]
-    ordering = ["-updated_at"]
+    ordering = ["-created_at"]
     filter_horizontal = ["tags",]
 
     summernote_fields = ('content',)
@@ -81,21 +81,21 @@ admin.site.register(models.Article, ArticleAdmin)
 
 
 class ArticleBotAdmin(SummernoteModelAdmin):
-    list_display = ["name", "site", "updated_at", "enabled"]
+    list_display = ["name", "site", "created_at", "updated_at", "enabled"]
     list_display_links = ["name"]
     list_filter = ["site__domain", "enabled"]
     readonly_fields = ["id", "created_at", "updated_at"]
-    ordering = ["-updated_at"]
+    ordering = ["-created_at"]
 
 admin.site.register(models.ArticleBot, ArticleBotAdmin)
 
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ["email", "full_name", "message_short", "site", "updated_at", "responded"]
+    list_display = ["email", "full_name", "message_short", "site", "created_at", "updated_at", "responded"]
     list_display_links = ["email"]
     list_filter = ["site__domain", "responded"]
     readonly_fields = [ i.name for i in models.Contact._meta.fields if i.name != "responded" ]  # make all fields readonly
-    ordering = ["-updated_at"]
+    ordering = ["-created_at"]
 
     def message_short(self, obj):
         "shorten comment for display"
@@ -106,23 +106,23 @@ admin.site.register(models.Contact, ContactAdmin)
 
 
 class ScheduleAdmin(admin.ModelAdmin):
-    list_display = ["name", "command", "updated_at", "last_success_at", "last_failure_at", "enabled"]
+    list_display = ["name", "command", "created_at", "updated_at", "last_success_at", "last_failure_at", "enabled"]
     list_display_links = ["name"]
     search_fields = ["name", "command"]
     list_filter = ["command", "enabled"]
     readonly_fields = ["id", "created_at", "updated_at", "last_success_at", "last_failure_at"]
-    ordering = ["-updated_at"]
+    ordering = ["-created_at"]
 
 if settings.CRON_SCHEDULES:
     admin.site.register(models.Schedule, ScheduleAdmin)
 
 
 class ScheduleLogAdmin(admin.ModelAdmin):
-    list_display = ["schedule", "content", "updated_at"]
+    list_display = ["schedule", "content", "created_at", "updated_at"]
     list_display_links = ["schedule"]
     search_fields = ["schedule__name", "content"]
     readonly_fields = ["id", "schedule", "content", "created_at", "updated_at"]
-    ordering = ["-updated_at"]
+    ordering = ["-created_at"]
 
 if settings.CRON_SCHEDULES:
     admin.site.register(models.ScheduleLog, ScheduleLogAdmin)

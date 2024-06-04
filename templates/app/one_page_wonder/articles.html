@@ -1,0 +1,48 @@
+{% extends "app/one_page_wonder/base.html" %}
+{% load static %}
+
+{% block title %}{{ landing.page_title }}: Articles{% endblock %}
+
+{% block header %}
+<h1 class="masthead-heading">Articles</h1>
+<h2 class="masthead-subheading mb-0">{{ landing.subheading }}</h2>
+{% endblock %}
+
+{% block content %}
+<!-- Articles section-->
+<section class="py-5 border-bottom" id="articles">
+
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            {% for article in page_obj %}
+                <div class="col-lg-4 mb-5 mb-lg-0 article_div">
+                    {% if article.image %}
+                    <a href="/articles/{{ article.slug_name }}"><img src="{% get_media_prefix %}{{ article.image }}" class="img-fluid img-thumbnail img-articles"></a>
+                    {% endif %}
+                    <h2 class="h4 fw-bolder"><center><a class="text-decoration-none articles-title" href="/articles/{{ article.slug_name }}">{{ article.title }}</a></center></h2>
+                    <hr>
+                    <p>{{ article.summary }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page={{ page_obj.previous_page_number }}"><i class="bi bi-arrow-left"></i></a>
+            {% endif %}
+    
+            <span class="page-current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}"><i class="bi bi-arrow-right"></i></a>
+            {% endif %}
+        </span>
+    </div>
+
+</section>
+
+{% endblock %}

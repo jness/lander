@@ -134,8 +134,8 @@ class Command(ScheduledCommand):
                 f"In one or two sentences summarize: '{content}'")
 
             # save a new unpublished article
-            article = Article(title=title, content=content, summary=summary, author='ChatGPT',
-                site=site, published=False, featured=False)
+            article = Article(title=title, content=content, summary=summary, author=articlebot.name,
+                site=site, published=False)
             article.save()
 
             # apply our tags to the new article
@@ -164,7 +164,6 @@ class Command(ScheduledCommand):
             # place the generated image on article and save with publish preferences
             article.image = '/uploads/' + article.slug_name + '.png'
             article.published=articlebot.auto_publish
-            article.featured=articlebot.auto_feature
             article.save()
 
             # log message to ScheduleLog is executed via schedule

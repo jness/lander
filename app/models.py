@@ -118,12 +118,11 @@ class Article(models.Model):
     on_site = CurrentSiteManager()
 
     tags = models.ManyToManyField(Tag)
+    published = models.BooleanField(default=False)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    featured = models.BooleanField(default=False)
-    published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
@@ -155,7 +154,6 @@ class ArticleBot(models.Model):
     places = models.JSONField(help_text="List of places to select for content generation", default=list)
 
     auto_publish = models.BooleanField(default=False)
-    auto_feature = models.BooleanField(default=False)
 
     # add relation to django.contrib.sites.models.Site
     # https://docs.djangoproject.com/en/5.0/ref/contrib/sites/

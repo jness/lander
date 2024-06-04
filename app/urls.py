@@ -37,6 +37,6 @@ urlpatterns = [
     path("summernote/", include("django_summernote.urls")),
     # our app
     path("", views.index, name="index"),
-    path("articles/", lambda request: redirect('/', permanent=False)),
+    path("articles/", views.articles, name="articles"),
     path("articles/<str:slug_name>", views.article, name="article"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
