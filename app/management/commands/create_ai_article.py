@@ -5,6 +5,7 @@ from random import choice
 
 from django.conf import settings
 from django.contrib.sites.models import Site
+from PIL import Image as Img
 
 from . import ScheduledCommand
 from app.models import Schedule, Article, ArticleBot, Tag
@@ -161,8 +162,13 @@ class Command(ScheduledCommand):
                 sys.exit(1)
                 raise(Exception('Failed to download image for article'))
 
+            # convert image to jpg to compress size
+            jpg_path = str(settings.MEDIA_ROOT) + '/uploads/' + article.slug_name + '.jpg'
+            im = Img.open(path)
+            im.save(jpg_path)
+
             # place the generated image on article and save with publish preferences
-            article.image = '/uploads/' + article.slug_name + '.png'
+            article.image = '/uploads/' + article.slug_name + '.jpg'
             article.published=articlebot.auto_publish
             article.save()
 

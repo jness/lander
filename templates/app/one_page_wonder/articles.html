@@ -16,8 +16,8 @@
         <div class="row gx-5">
             {% for article in page_obj %}
                 <div class="col-lg-4 mb-5 mb-lg-0 article_div">
-                    {% if article.image %}
-                    <a href="/articles/{{ article.slug_name }}"><img src="{% get_media_prefix %}{{ article.image }}" class="img-fluid img-thumbnail img-articles"></a>
+                    {% if article.thumbnail %}
+                    <a href="/articles/{{ article.slug_name }}"><img src="{% get_media_prefix %}{{ article.thumbnail }}" class="img-fluid img-thumbnail img-articles"></a>
                     {% endif %}
                     <h2 class="h4 fw-bolder"><center><a class="text-decoration-none articles-title" href="/articles/{{ article.slug_name }}">{{ article.title }}</a></center></h2>
                     <hr>

@@ -1,5 +1,7 @@
 import os
+from pathlib import Path
 
+from PIL import Image as Img
 from colorfield.fields import ColorField
 
 from django.db import models
@@ -109,7 +111,8 @@ class Article(models.Model):
     content = models.TextField()
     author = models.CharField(max_length=100)
 
-    image = models.FileField(upload_to="uploads/", blank=True, null=True)
+    image = models.ImageField(upload_to="uploads/", blank=True, null=True)
+    thumbnail = models.ImageField(upload_to="uploads/", blank=True, null=True)
 
     # add relation to django.contrib.sites.models.Site
     # https://docs.djangoproject.com/en/5.0/ref/contrib/sites/
@@ -129,6 +132,21 @@ class Article(models.Model):
     
     def save(self):
         self.slug_name = slugify(self.title)
+
+        # create thumbnail of image
+        if self.image and not self.thumbnail:
+            # get absolute paths
+            name = Path(self.image.name)
+            file_path = Path(settings.MEDIA_ROOT) / f"uploads/{name.stem}{name.suffix}"
+            thumbnail_path = Path(settings.MEDIA_ROOT) / f"uploads/thumb_{name.stem}.jpg"
+            # resize original
+            size = 512, 512
+            im = Img.open(file_path)
+            im.thumbnail(size)
+            im.save(thumbnail_path)
+            # add thumbnail to object
+            self.thumbnail = f"uploads/thumb_{name.stem}.jpg"
+
         super().save()
 
 
