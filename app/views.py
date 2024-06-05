@@ -8,6 +8,30 @@ from . import models
 from . import forms
 
 
+def about(request):
+    """
+    About Page
+    """
+
+    # finding landing for the site and make sure enabled
+    try:
+        landing = models.Landing.on_site.get(enabled=True)
+    except ObjectDoesNotExist:
+        raise DisallowedHost("Not a valid site.")
+    
+    # if we don't have an about section return error
+    print(landing.about)
+    if landing.about == '':
+        raise DisallowedHost("Not a valid site.")
+
+    context = {
+        'landing': landing
+    }
+
+    template = landing.template.path + '/about.html'
+    return render(request, template, context)
+
+
 def index(request):
     """
     Index Page

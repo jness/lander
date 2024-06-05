@@ -1,0 +1,26 @@
+{% extends "app/one_page_wonder/base.html" %}
+{% load static %}
+
+{% block title %}{{ landing.page_title }}: About{% endblock %}
+
+{% block header %}
+<h1 class="masthead-heading mb-0">About</h1>
+<h2 class="masthead-subheading mb-0">{{ landing.subheading }}</h2>
+{% endblock %}
+
+{% block content %}
+<!-- Article -->
+<div class="container px-5 my-5 px-5">
+    <span class="article-content">
+        {{ landing.about|safe }}
+        {% if landing.disclaimer %}
+        <br>
+        <div class="container">
+            <hr>
+            <p class="small" style="font-size: 0.95rem;">{{ landing.disclaimer }}</p>
+        </div>
+        {% endif %}
+
+    </span>
+</div>
+{% endblock %}

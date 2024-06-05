@@ -39,6 +39,9 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="/articles/">Articles</a></li>
+                        {% if landing.about %}
+                        <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -66,7 +69,8 @@
         {% endblock %}
 
         <!-- Footer-->
-        <footer class="py-3 bg-background">
+        <hr>
+        <footer class="footer py-3 bg-background">
             <div class="container px-5"><p class="m-0 text-center small">{{ landing.footer }}</p></div>
         </footer>
 
@@ -76,6 +80,6 @@
         <script src="{% static 'app/js/bootstrap.bundle.min.js' %}"></script>
         <!-- Core theme JS-->
         <script src="{% static 'app/js/one_page_wonder.js' %}"></script>
-
+        
     </body>
 </html>

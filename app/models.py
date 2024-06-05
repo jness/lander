@@ -53,6 +53,9 @@ class Landing(models.Model):
     bs_primary = ColorField(verbose_name="Primary Color", format="rgba", default="rgba(238, 9, 121)")
     bs_secondary = ColorField(verbose_name="Secondary Color", format="rgba", default="rgba(255, 106, 0)")
 
+    about = models.TextField(blank=True, null=True)
+    disclaimer = models.TextField(blank=True, null=True)
+
     # site template
     template = models.ForeignKey(Template, on_delete=models.RESTRICT)
 

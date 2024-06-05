@@ -52,12 +52,14 @@ class TagAdmin(admin.ModelAdmin):
 admin.site.register(models.Tag, TagAdmin)
 
 
-class LandingAdmin(admin.ModelAdmin):
+class LandingAdmin(SummernoteModelAdmin):
     list_display = ["site", "page_title", "created_at", "updated_at", "enabled"]
     list_display_links = ["site"]
     list_filter = ["site__domain", "enabled"]
     readonly_fields = ["id", "created_at", "updated_at"]
     ordering = ["-created_at"]
+
+    summernote_fields = ('about',)
 
 admin.site.register(models.Landing, LandingAdmin)
 
