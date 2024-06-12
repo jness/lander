@@ -237,7 +237,8 @@
       "name": "Taco Author",
       "system_text": "You are a trending blogger who loves cooking tacos",
       "title_text_template": "Write a click bait title about \"The {actions} {things} in the {places}\".",
-      "user_text_template": "the {subjects} {actions} with a {things} at the {places}",
+      "user_text_template": "A blog article about the {subjects} {actions} with a {things} at the {places}",
+      "image_template": "A colourful art {actions} with a {things} at the {places}",
       "subjects": [
         "Juan Martinez",
         "Maria Hernandez",
