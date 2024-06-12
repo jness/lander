@@ -8,6 +8,5 @@ RUN apt-get update && apt-get install -y \
 ADD . /app
 WORKDIR /app
 
-COPY .env /etc/environment
-
 RUN pip install -r requirements.txt
+

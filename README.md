@@ -30,6 +30,14 @@ feel free to use which ever works best for you.
 * https://docs.docker.com/get-docker/
 * https://podman.io/
 
+### Configuration
+
+Lander ships with a working dev configuration, found at `project/settings.py`.
+
+Overrides and/or production configuration can be added to a non git tracked
+`project/settings_local.py` file, if present this configuration is loaded
+from the bottom of the shipped project/settings.py.
+
 ### Startup
 
 Using the `{runtime}-launch.sh` script for your container enviornment, build and start your application:
