@@ -60,7 +60,7 @@ def index(request):
 
     context = {
         'landing': landing,
-        'articles': models.Article.on_site.filter(published=True).order_by('-created_at')[0:3],
+        'articles': models.Article.on_site.filter(published=True).order_by('-created_at')[0:6],
         'contact_form': contact_form
     }
 
