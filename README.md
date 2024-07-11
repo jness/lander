@@ -19,6 +19,9 @@ and scheduling management commands using cron.
 ![admin](docs/images/admin.jpg)
 ![api](docs/images/api.jpg)
 
+## Demo
+
+[![video](https://img.youtube.com/vi/JA59_q2SHTg/0.jpg)](https://www.youtube.com/watch?v=JA59_q2SHTg)
 
 ## Development (local)
 
